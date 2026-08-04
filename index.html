@@ -363,14 +363,14 @@
             <div class="timeline-date">2024 – Present</div>
             <div class="timeline-title">AI-Augmented Operations & Innovation SPOC</div>
             <div class="timeline-company">Mercedes-Benz Research and Development India</div>
-            <div class="timeline-desc">Built a Teams ChatOps bot with Azure OpenAI integration for intelligent alert summarization. Driving AI/automation adoption as department Innovation SPOC. Filed 3 patents in automation domain. Received Achievement of Excellence Award.</div>
+            <div class="timeline-desc">Built a Teams ChatOps bot with Azure OpenAI integration for intelligent alert summarization. Driving AI/automation adoption as department Innovation SPOC. Filed 3 patents — 2 in review process, 1 in filing with IP team. Received Achievement of Excellence Award.</div>
         </div>
         <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-date">July 2023 – Present</div>
             <div class="timeline-title">Software Engineer — Platform & Infrastructure Automation</div>
             <div class="timeline-company">Mercedes-Benz Research and Development India</div>
-            <div class="timeline-desc">Own the Ansible/AWX automation framework powering 100+ environments. Design CI/CD pipelines (Jenkins, GitLab CI), build self-healing infrastructure, and manage large-scale platform operations for multiple vehicle programs on the MTTF platform.</div>
+            <div class="timeline-desc">Own the Ansible/AWX automation framework powering 100+ environments. Design CI/CD pipelines (Jenkins, GitLab CI), build self-healing infrastructure, and manage large-scale platform operations for multiple vehicle programs.</div>
         </div>
         <div class="timeline-item">
             <div class="timeline-dot"></div>
@@ -457,10 +457,10 @@
             <div class="project-tags"><span class="project-tag">DevOps</span><span class="project-tag">CI/CD</span><span class="project-tag">Cross-site</span><span class="project-tag">Sindelfingen</span></div>
         </div>
         <div class="project-card" style="grid-column: 1 / -1;">
-            <div class="project-icon">&#128161;</div>
+            <div class="project-icon">&#11088;</div>
             <div class="project-title">Patents & Innovation SPOC</div>
-            <div class="project-desc">Department-level Innovation SPOC driving AI/automation adoption across teams. Filed 3 patent applications (1 in grant pipeline, 2 in jury review). Conduct ideation workshops, mentor engineers on innovation practices, and manage the patent filing pipeline.</div>
-            <div class="project-tags"><span class="project-tag">Patents</span><span class="project-tag">Innovation</span><span class="project-tag">Mentoring</span><span class="project-tag">Workshops</span><span class="project-tag">AI Adoption</span></div>
+            <div class="project-desc">Department-level Innovation SPOC driving AI/automation adoption across teams. 3 patent applications filed — 2 currently in review process, 1 in filing process with IP team. Conduct ideation workshops, mentor engineers on innovation practices, and manage the patent filing pipeline.</div>
+            <div class="project-tags"><span class="project-tag">Patents (3 Filed)</span><span class="project-tag">Innovation</span><span class="project-tag">Mentoring</span><span class="project-tag">Workshops</span><span class="project-tag">AI Adoption</span></div>
         </div>
     </div>
 </section>
@@ -526,28 +526,47 @@ typeEffect();
 
 // Terminal Animation
 const terminalLines = [
-    { type: 'cmd', prompt: '$ ', text: 'ansible-playbook -i inventory/mttf site.yml --limit=bench-farm' },
+    { type: 'cmd', prompt: '$ ', text: 'docker compose up -d infra-monitor alert-engine chatops-bot' },
+    { type: 'info', text: '[+] Running 3/3' },
+    { type: 'success', text: ' ✓ Container infra-monitor    Started   0.8s' },
+    { type: 'success', text: ' ✓ Container alert-engine     Started   1.2s' },
+    { type: 'success', text: ' ✓ Container chatops-bot      Started   1.5s' },
     { type: 'output', text: '' },
-    { type: 'output', text: 'PLAY [Deploy MTTF Environment] ************************************************' },
-    { type: 'success', text: 'TASK [provision] : ok=47  changed=12  unreachable=0  failed=0' },
-    { type: 'success', text: 'TASK [configure] : ok=100+ environments provisioned successfully' },
+    { type: 'cmd', prompt: '$ ', text: 'ansible-playbook -i inventory/prod deploy.yml --forks=50' },
     { type: 'output', text: '' },
-    { type: 'cmd', prompt: '$ ', text: 'python health_check.py --env=all --auto-heal' },
-    { type: 'info', text: '[INFO] Scanning 100+ environments...' },
-    { type: 'info', text: '[INFO] Degraded: bench-042 (memory: 94%) — triggering recovery...' },
-    { type: 'success', text: '[OK] bench-042 recovered: service restarted, health restored ✓' },
-    { type: 'success', text: '[OK] All environments healthy. MTTR: 0 (auto-healed)' },
+    { type: 'output', text: 'PLAY [Provision & Configure Environments] *************************************' },
+    { type: 'info', text: 'TASK [provision]  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ 100%' },
+    { type: 'success', text: 'ok=112  changed=18  unreachable=0  failed=0  ✓' },
     { type: 'output', text: '' },
-    { type: 'cmd', prompt: '$ ', text: 'jenkins-cli build "MTTF-Pipeline" --branch=main --deploy' },
-    { type: 'info', text: '[Pipeline] Stage: Build → Test → Quality Gate → Deploy' },
-    { type: 'success', text: '[Pipeline] SUCCESS — deployed to 10 programs in 4m 12s ✓' },
+    { type: 'cmd', prompt: '$ ', text: 'python3 monitor.py --mode=live --auto-heal' },
+    { type: 'info', text: '┌─────────────────────────────────────────────────┐' },
+    { type: 'info', text: '│  LIVE PLATFORM HEALTH DASHBOARD                 │' },
+    { type: 'info', text: '├─────────────────────────────────────────────────┤' },
+    { type: 'success', text: '│  Environments Online:  108/112  (96.4%)    ✓   │' },
+    { type: 'info', text: '│  Pipelines Running:    23       active          │' },
+    { type: 'info', text: '│  Avg Response Time:    42ms     nominal         │' },
+    { type: 'output', text: '│  Alerts Today:         3       (auto-resolved) │' },
+    { type: 'info', text: '└─────────────────────────────────────────────────┘' },
     { type: 'output', text: '' },
-    { type: 'cmd', prompt: '$ ', text: 'curl -X POST teams-bot/api/alert --data \'{"type":"summary"}\'' },
-    { type: 'info', text: '[Azure OpenAI] Generating alert summary via structured prompt...' },
-    { type: 'success', text: '[Bot] Alert summary posted to #infra-ops channel ✓' },
+    { type: 'info', text: '[WARN] env-047: CPU spike detected (89%) — evaluating...' },
+    { type: 'info', text: '[AUTO-HEAL] Triggering: service restart + cache clear...' },
+    { type: 'success', text: '[OK] env-047: recovered in 12s. Health restored. ✓' },
     { type: 'output', text: '' },
-    { type: 'cmd', prompt: '$ ', text: 'echo "All systems operational. Zero manual interventions today."' },
-    { type: 'success', text: 'All systems operational. Zero manual interventions today. 🚀' },
+    { type: 'cmd', prompt: '$ ', text: 'git push origin main && jenkins build --trigger' },
+    { type: 'info', text: '[Pipeline] Build → Test → Security Gate → Deploy' },
+    { type: 'success', text: '[Pipeline] ✓ All stages passed — deployed in 3m 47s' },
+    { type: 'output', text: '' },
+    { type: 'cmd', prompt: '$ ', text: 'curl -s teams-bot/api/status | python3 -m json.tool' },
+    { type: 'info', text: '{' },
+    { type: 'info', text: '  "bot_status": "online",' },
+    { type: 'info', text: '  "ai_engine": "azure-openai-gpt4",' },
+    { type: 'info', text: '  "alerts_summarized_today": 47,' },
+    { type: 'info', text: '  "auto_remediated": 12,' },
+    { type: 'success', text: '  "uptime": "99.97%"' },
+    { type: 'info', text: '}' },
+    { type: 'output', text: '' },
+    { type: 'cmd', prompt: '$ ', text: 'echo "Day complete. Zero escalations. Platform stable."' },
+    { type: 'success', text: 'Day complete. Zero escalations. Platform stable. 🚀' },
 ];
 
 function animateTerminal() {
