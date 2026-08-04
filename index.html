@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Shadab — Platform Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark: #0a0e17;
+            --dark-2: #111827;
+            --dark-3: #1e293b;
+            --teal: #0ea5e9;
+            --teal-dim: #0e7490;
+            --cyan: #22d3ee;
+            --green: #34d399;
+            --purple: #a78bfa;
+            --white: #f8fafc;
+            --gray: #94a3b8;
+            --light-bg: #f8fafc;
+            --card-bg: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: var(--light-bg); color: #1e293b; overflow-x: hidden; }
+
+        /* NAV */
+        .nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(10, 14, 23, 0.95); backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(14, 165, 233, 0.2);
+            padding: 14px 40px; display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-logo { font-size: 18px; font-weight: 800; color: var(--white); letter-spacing: 0.5px; }
+        .nav-logo span { color: var(--teal); }
+        .nav-links { display: flex; gap: 28px; }
+        .nav-links a { color: var(--gray); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.3s; letter-spacing: 0.3px; }
+        .nav-links a:hover { color: var(--cyan); }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh; background: var(--dark);
+            display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden; padding: 80px 40px;
+        }
+        .hero::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 30% 50%, rgba(14, 165, 233, 0.08) 0%, transparent 60%),
+                        radial-gradient(ellipse at 70% 80%, rgba(34, 211, 238, 0.05) 0%, transparent 50%);
+        }
+        .hero-grid {
+            position: absolute; inset: 0; opacity: 0.03;
+            background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+        .hero-content { position: relative; z-index: 2; max-width: 900px; width: 100%; }
+        .hero-badge {
+            display: inline-block; padding: 6px 16px; border-radius: 20px;
+            background: rgba(14, 165, 233, 0.1); border: 1px solid rgba(14, 165, 233, 0.3);
+            color: var(--cyan); font-size: 12px; font-weight: 500; letter-spacing: 1px;
+            text-transform: uppercase; margin-bottom: 20px;
+        }
+        .hero-name {
+            font-size: clamp(36px, 6vw, 60px); font-weight: 900; color: var(--white);
+            line-height: 1.1; margin-bottom: 12px;
+        }
+        .hero-name span { color: var(--teal); }
+        .hero-tagline {
+            font-family: 'JetBrains Mono', monospace; font-size: clamp(14px, 2vw, 18px);
+            color: var(--cyan); min-height: 28px; margin-bottom: 24px;
+        }
+        .hero-tagline .cursor { animation: blink 1s infinite; color: var(--teal); }
+        @keyframes blink { 0%,50% { opacity: 1; } 51%,100% { opacity: 0; } }
+        .hero-desc { font-size: 16px; color: var(--gray); line-height: 1.7; max-width: 650px; margin-bottom: 32px; }
+        .hero-stats { display: flex; gap: 40px; margin-top: 20px; }
+        .stat { text-align: center; }
+        .stat-num { font-size: 32px; font-weight: 800; color: var(--teal); }
+        .stat-label { font-size: 11px; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+        .hero-links { display: flex; gap: 16px; margin-top: 32px; }
+        .hero-links a {
+            padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; transition: all 0.3s;
+        }
+        .btn-primary { background: var(--teal); color: var(--dark); }
+        .btn-primary:hover { background: var(--cyan); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(14, 165, 233, 0.3); }
+        .btn-outline { border: 1.5px solid var(--teal); color: var(--teal); background: transparent; }
+        .btn-outline:hover { background: rgba(14, 165, 233, 0.1); }
+
+        /* TERMINAL */
+        .terminal-section { background: var(--dark-2); padding: 80px 40px; }
+        .terminal-container { max-width: 800px; margin: 0 auto; }
+        .terminal-header-text { text-align: center; margin-bottom: 40px; }
+        .terminal-header-text h2 { font-size: 28px; color: var(--white); font-weight: 700; }
+        .terminal-header-text p { color: var(--gray); margin-top: 8px; font-size: 14px; }
+        .terminal {
+            background: #0d1117; border-radius: 12px; overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5); border: 1px solid #21262d;
+        }
+        .terminal-bar {
+            background: #161b22; padding: 12px 16px; display: flex; align-items: center; gap: 8px;
+            border-bottom: 1px solid #21262d;
+        }
+        .terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
+        .terminal-dot.red { background: #ff5f57; }
+        .terminal-dot.yellow { background: #febc2e; }
+        .terminal-dot.green { background: #28c840; }
+        .terminal-title { color: var(--gray); font-size: 12px; margin-left: 12px; font-family: 'JetBrains Mono', monospace; }
+        .terminal-body { padding: 24px; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.8; min-height: 320px; }
+        .terminal-line { opacity: 0; animation: fadeInLine 0.3s forwards; }
+        .terminal-line .prompt { color: var(--green); }
+        .terminal-line .cmd { color: var(--white); }
+        .terminal-line .output { color: var(--gray); }
+        .terminal-line .success { color: var(--green); }
+        .terminal-line .info { color: var(--cyan); }
+        .terminal-line .flag { color: var(--purple); }
+        @keyframes fadeInLine { to { opacity: 1; } }
+
+        /* SECTIONS */
+        .section { padding: 80px 40px; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 32px; font-weight: 800; color: #0f172a; margin-bottom: 8px; }
+        .section-header .accent { color: var(--teal-dim); }
+        .section-header p { color: #64748b; font-size: 15px; }
+
+        /* TIMELINE */
+        .timeline { max-width: 800px; margin: 0 auto; position: relative; }
+        .timeline::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--teal), var(--cyan), var(--green)); }
+        .timeline-item { padding-left: 56px; margin-bottom: 40px; position: relative; opacity: 0; transform: translateX(-20px); transition: all 0.6s ease; }
+        .timeline-item.visible { opacity: 1; transform: translateX(0); }
+        .timeline-dot {
+            position: absolute; left: 12px; top: 4px; width: 18px; height: 18px;
+            background: var(--teal); border-radius: 50%; border: 3px solid var(--light-bg);
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+        }
+        .timeline-date { font-size: 12px; color: var(--teal-dim); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+        .timeline-title { font-size: 18px; font-weight: 700; color: #0f172a; margin-bottom: 4px; }
+        .timeline-company { font-size: 14px; color: var(--teal-dim); font-weight: 600; margin-bottom: 8px; }
+        .timeline-desc { font-size: 14px; color: #475569; line-height: 1.6; }
+
+        /* SKILLS */
+        .skills-container { max-width: 800px; margin: 0 auto; }
+        .skill-category { margin-bottom: 28px; }
+        .skill-category-title { font-size: 13px; font-weight: 700; color: var(--teal-dim); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; }
+        .skill-bars { display: flex; flex-direction: column; gap: 10px; }
+        .skill-bar-item { display: flex; align-items: center; gap: 12px; }
+        .skill-bar-label { font-size: 13px; font-weight: 500; color: #374151; min-width: 140px; }
+        .skill-bar-track { flex: 1; height: 8px; background: #e2e8f0; border-radius: 4px; overflow: hidden; }
+        .skill-bar-fill { height: 100%; border-radius: 4px; width: 0; transition: width 1.5s ease; }
+        .skill-bar-fill.expert { background: linear-gradient(90deg, var(--teal), var(--cyan)); }
+        .skill-bar-fill.advanced { background: linear-gradient(90deg, var(--teal-dim), var(--teal)); }
+        .skill-bar-fill.intermediate { background: linear-gradient(90deg, #6366f1, var(--purple)); }
+
+        /* PROJECTS */
+        .projects-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .project-card {
+            background: var(--card-bg); border-radius: 16px; padding: 28px;
+            border: 1px solid #e2e8f0; transition: all 0.4s ease; position: relative; overflow: hidden;
+        }
+        .project-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--teal), var(--cyan));
+            transform: scaleX(0); transition: transform 0.4s ease; transform-origin: left;
+        }
+        .project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(14, 116, 144, 0.1); border-color: rgba(14, 165, 233, 0.3); }
+        .project-card:hover::before { transform: scaleX(1); }
+        .project-icon { font-size: 28px; margin-bottom: 14px; }
+        .project-title { font-size: 16px; font-weight: 700; color: #0f172a; margin-bottom: 8px; }
+        .project-desc { font-size: 13px; color: #64748b; line-height: 1.6; margin-bottom: 14px; }
+        .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+        .project-tag { padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 500; background: rgba(14, 165, 233, 0.08); color: var(--teal-dim); border: 1px solid rgba(14, 165, 233, 0.15); }
+
+        /* AWARDS */
+        .awards-grid { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+        .award-item {
+            display: flex; align-items: center; gap: 20px; padding: 20px 24px;
+            background: var(--card-bg); border-radius: 12px; border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+        .award-item:hover { border-color: rgba(14, 165, 233, 0.3); box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
+        .award-year { font-size: 14px; font-weight: 800; color: var(--teal); min-width: 50px; }
+        .award-content { flex: 1; }
+        .award-title { font-size: 15px; font-weight: 700; color: #0f172a; }
+        .award-desc { font-size: 12px; color: #64748b; margin-top: 2px; }
+
+        /* FOOTER */
+        .footer {
+            background: var(--dark); padding: 50px 40px; text-align: center;
+            border-top: 1px solid rgba(14, 165, 233, 0.2);
+        }
+        .footer-name { font-size: 20px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+        .footer-tagline { color: var(--gray); font-size: 13px; margin-bottom: 20px; }
+        .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 20px; }
+        .footer-links a { color: var(--teal); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--cyan); }
+        .footer-copy { color: #475569; font-size: 11px; }
+
+        /* CONTACT MODAL */
+        .contact-modal {
+            display: none; position: fixed; inset: 0; z-index: 9999;
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(6px);
+            align-items: center; justify-content: center;
+        }
+        .contact-modal.active { display: flex; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .contact-modal-content {
+            background: #ffffff; border-radius: 16px; padding: 36px;
+            max-width: 420px; width: 90%; position: relative;
+            box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+            animation: slideUp 0.3s ease;
+        }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .modal-close {
+            position: absolute; top: 14px; right: 18px;
+            background: none; border: none; font-size: 24px; color: #94a3b8;
+            cursor: pointer; transition: color 0.3s;
+        }
+        .modal-close:hover { color: #0f172a; }
+        .modal-title { font-size: 20px; font-weight: 800; color: #0f172a; margin-bottom: 4px; }
+        .modal-subtitle { font-size: 12px; color: #94a3b8; margin-bottom: 20px; }
+        .contact-field {
+            display: flex; align-items: center; padding: 14px 16px;
+            border-radius: 10px; border: 1px solid #e2e8f0; margin-bottom: 10px;
+            cursor: pointer; transition: all 0.2s;
+        }
+        .contact-field:hover { border-color: var(--teal); background: rgba(14, 165, 233, 0.04); transform: translateX(4px); }
+        .contact-field-label { font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; min-width: 70px; font-weight: 600; }
+        .contact-field-value { flex: 1; font-size: 14px; font-weight: 500; color: #1e293b; }
+        .copy-icon { font-size: 16px; opacity: 0.4; transition: opacity 0.2s; }
+        .contact-field:hover .copy-icon { opacity: 1; }
+        .contact-field.copied { border-color: var(--green); background: rgba(52, 211, 153, 0.08); }
+        .copied-toast {
+            position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%);
+            background: var(--dark); color: var(--green); padding: 8px 20px; border-radius: 20px;
+            font-size: 13px; font-weight: 600; opacity: 0; transition: opacity 0.3s;
+        }
+        .copied-toast.show { opacity: 1; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav { padding: 12px 20px; }
+            .nav-links { gap: 16px; }
+            .nav-links a { font-size: 11px; }
+            .hero { padding: 80px 20px; }
+            .hero-stats { gap: 24px; }
+            .section { padding: 60px 20px; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .terminal-body { font-size: 11px; padding: 16px; }
+            .skill-bar-label { min-width: 100px; font-size: 11px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+    <div class="nav-logo">MS<span>.</span></div>
+    <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#terminal">Terminal</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#awards">Awards</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+        <div class="hero-badge">Available for Opportunities</div>
+        <h1 class="hero-name">Mohammed <span>Shadab</span></h1>
+        <div class="hero-tagline">
+            <span id="typed-text"></span><span class="cursor">|</span>
+        </div>
+        <p class="hero-desc">
+            Platform Engineer at Mercedes-Benz R&D building large-scale infrastructure automation, self-healing systems, and AI-augmented operational tooling. I make infrastructure reliable, automated, and intelligent.
+        </p>
+        <div class="hero-stats">
+            <div class="stat"><div class="stat-num">100+</div><div class="stat-label">Environments Managed</div></div>
+            <div class="stat"><div class="stat-num">3+</div><div class="stat-label">Years Experience</div></div>
+            <div class="stat"><div class="stat-num">3</div><div class="stat-label">Patents Filed</div></div>
+            <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Programs Supported</div></div>
+        </div>
+        <div class="hero-links">
+            <a href="https://www.linkedin.com/in/-mshadab" target="_blank" class="btn-primary">LinkedIn</a>
+            <a href="#" class="btn-outline" onclick="openContactModal(event)">Contact Me</a>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT MODAL -->
+<div class="contact-modal" id="contactModal" onclick="closeContactModal(event)">
+    <div class="contact-modal-content" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeContactModal(event)">&times;</button>
+        <h3 class="modal-title">Contact Details</h3>
+        <p class="modal-subtitle">Click any field to copy</p>
+        <div class="contact-field" onclick="copyToClipboard('Mohammed Shadab', this)">
+            <span class="contact-field-label">Name</span>
+            <span class="contact-field-value">Mohammed Shadab</span>
+            <span class="copy-icon">&#128203;</span>
+        </div>
+        <div class="contact-field" onclick="copyToClipboard('+91-9741039435', this)">
+            <span class="contact-field-label">Phone</span>
+            <span class="contact-field-value">+91-9741039435</span>
+            <span class="copy-icon">&#128203;</span>
+        </div>
+        <div class="contact-field" onclick="copyToClipboard('mohammedshadab555@gmail.com', this)">
+            <span class="contact-field-label">Email</span>
+            <span class="contact-field-value">mohammedshadab555@gmail.com</span>
+            <span class="copy-icon">&#128203;</span>
+        </div>
+        <div class="contact-field" onclick="copyToClipboard('Bengaluru, Karnataka, India', this)">
+            <span class="contact-field-label">Location</span>
+            <span class="contact-field-value">Bengaluru, Karnataka, India</span>
+            <span class="copy-icon">&#128203;</span>
+        </div>
+        <div class="contact-field" onclick="copyToClipboard('https://www.linkedin.com/in/-mshadab', this)">
+            <span class="contact-field-label">LinkedIn</span>
+            <span class="contact-field-value">linkedin.com/in/-mshadab</span>
+            <span class="copy-icon">&#128203;</span>
+        </div>
+        <div class="copied-toast" id="copiedToast">Copied!</div>
+    </div>
+</div>
+
+<!-- TERMINAL -->
+<section class="terminal-section" id="terminal">
+    <div class="terminal-container">
+        <div class="terminal-header-text">
+            <h2>What I Do — Live</h2>
+            <p>A day in my terminal</p>
+        </div>
+        <div class="terminal">
+            <div class="terminal-bar">
+                <div class="terminal-dot red"></div>
+                <div class="terminal-dot yellow"></div>
+                <div class="terminal-dot green"></div>
+                <span class="terminal-title">shadab@mbrdi-platform ~ </span>
+            </div>
+            <div class="terminal-body" id="terminal-body"></div>
+        </div>
+    </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+    <div class="section-header">
+        <h2>Experience <span class="accent">Timeline</span></h2>
+        <p>My professional journey</p>
+    </div>
+    <div class="timeline">
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">Oct – Dec 2025</div>
+            <div class="timeline-title">On-Site Deployment — Sindelfingen, Germany</div>
+            <div class="timeline-company">Mercedes-Benz AG, Sindelfingen Plant</div>
+            <div class="timeline-desc">Deployed on-site at the Sindelfingen manufacturing plant for 3 months during a critical delivery phase. Resolved infrastructure bottlenecks, optimized CI/CD workflows, and improved cross-site coordination between India and Germany teams.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2024 – Present</div>
+            <div class="timeline-title">AI-Augmented Operations & Innovation SPOC</div>
+            <div class="timeline-company">Mercedes-Benz Research and Development India</div>
+            <div class="timeline-desc">Built a Teams ChatOps bot with Azure OpenAI integration for intelligent alert summarization. Driving AI/automation adoption as department Innovation SPOC. Filed 3 patents in automation domain. Received Achievement of Excellence Award.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">July 2023 – Present</div>
+            <div class="timeline-title">Software Engineer — Platform & Infrastructure Automation</div>
+            <div class="timeline-company">Mercedes-Benz Research and Development India</div>
+            <div class="timeline-desc">Own the Ansible/AWX automation framework powering 100+ environments. Design CI/CD pipelines (Jenkins, GitLab CI), build self-healing infrastructure, and manage large-scale platform operations for multiple vehicle programs on the MTTF platform.</div>
+        </div>
+        <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2019 – 2023</div>
+            <div class="timeline-title">B.E. in Electronics & Communications</div>
+            <div class="timeline-company">Siddaganga Institute of Technology, Tumkur</div>
+            <div class="timeline-desc">CGPA: 8.08/10. Won Best Paper Award at ICoAC 2023 (Anna University) for "Design of Voice Automated Floor Cleaning Robot". Active in robotics and embedded systems projects.</div>
+        </div>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section" id="skills" style="background: #f1f5f9;">
+    <div class="section-header">
+        <h2>Technical <span class="accent">Skills</span></h2>
+        <p>Proficiency levels across my tech stack</p>
+    </div>
+    <div class="skills-container">
+        <div class="skill-category">
+            <div class="skill-category-title">Infrastructure & Automation</div>
+            <div class="skill-bars">
+                <div class="skill-bar-item"><span class="skill-bar-label">Ansible / AWX</span><div class="skill-bar-track"><div class="skill-bar-fill expert" data-width="95%"></div></div></div>
+                <div class="skill-bar-item"><span class="skill-bar-label">Linux (RHEL/Ubuntu)</span><div class="skill-bar-track"><div class="skill-bar-fill expert" data-width="92%"></div></div></div>
+                <div class="skill-bar-item"><span class="skill-bar-label">Docker</span><div class="skill-bar-track"><div class="skill-bar-fill expert" data-width="88%"></div></div></div>
+                <div class="skill-bar-item"><span class="skill-bar-label">Infrastructure as Code</span><div class="skill-bar-track"><div class="skill-bar-fill expert" data-width="90%"></div></div></div>
+            </div>
+        </div>
+        <div class="skill-category">
+            <div class="skill-category-title">CI/CD & DevOps</div>
+            <div class="skill-bars">
+                <div class="skill-bar-item"><span class="skill-bar-label">Jenkins</span><div class="skill-bar-track"><div class="skill-bar-fill expert" data-width="93%"></div></div></div>
+                <div class="skill-bar-item"><span class="skill-bar-label">GitLab CI/CD</span><div class="skill-bar-track"><div class="skill-bar-fill advanced" data-width="85%"></div></div></div>
+                <div class="skill-bar-item"><span class="skill-bar-label">Git & GitOps</span><div class="skill-bar-track"><div class="skill-bar-fill expert" data-width="90%"></div></div></div>
+            </div>
+        </div>
+        <div class="skill-category">
+            <div class="skill-category-title">Programming & Scripting</div>
+            <div class="skill-bars">
+                <div class="skill-bar-item"><span class="skill-bar-label">Python</span><div class="skill-bar-track"><div class="skill-bar-fill advanced" data-width="82%"></div></div></div>
+                <div class="skill-bar-item"><span class="skill-bar-label">Shell / Bash</span><div class="skill-bar-track"><div class="skill-bar-fill expert" data-width="90%"></div></div></div>
+                <div class="skill-bar-item"><span class="skill-bar-label">Groovy / YAML</span><div class="skill-bar-track"><div class="skill-bar-fill advanced" data-width="85%"></div></div></div>
+            </div>
+        </div>
+        <div class="skill-category">
+            <div class="skill-category-title">AI & Tooling</div>
+            <div class="skill-bars">
+                <div class="skill-bar-item"><span class="skill-bar-label">Azure OpenAI API</span><div class="skill-bar-track"><div class="skill-bar-fill intermediate" data-width="65%"></div></div></div>
+                <div class="skill-bar-item"><span class="skill-bar-label">Prompt Engineering</span><div class="skill-bar-track"><div class="skill-bar-fill intermediate" data-width="70%"></div></div></div>
+                <div class="skill-bar-item"><span class="skill-bar-label">Teams Bot Framework</span><div class="skill-bar-track"><div class="skill-bar-fill advanced" data-width="75%"></div></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+    <div class="section-header">
+        <h2>Featured <span class="accent">Projects</span></h2>
+        <p>Real-world systems I've built and operate</p>
+    </div>
+    <div class="projects-grid">
+        <div class="project-card">
+            <div class="project-icon">&#9881;</div>
+            <div class="project-title">MTTF Automation Framework</div>
+            <div class="project-desc">Ansible-powered platform managing provisioning, configuration, and lifecycle of 100+ test environments. Supports parallel execution, on-demand reservations, and multi-platform deployments (Linux, Windows, QNX).</div>
+            <div class="project-tags"><span class="project-tag">Ansible</span><span class="project-tag">AWX</span><span class="project-tag">IaC</span><span class="project-tag">Python</span><span class="project-tag">RBAC</span></div>
+        </div>
+        <div class="project-card">
+            <div class="project-icon">&#129302;</div>
+            <div class="project-title">Teams ChatOps Bot</div>
+            <div class="project-desc">Microsoft Teams bot with Azure OpenAI integration enabling conversational infrastructure management. Uses structured prompt engineering for alert summarization and agent-style routing to automation workflows.</div>
+            <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">Azure OpenAI</span><span class="project-tag">Bot Framework</span><span class="project-tag">REST API</span></div>
+        </div>
+        <div class="project-card">
+            <div class="project-icon">&#128737;</div>
+            <div class="project-title">Self-Healing Platform</div>
+            <div class="project-desc">Automated fault detection and recovery system. Detects degraded environments via health probes, triggers recovery sequences (restart, reset, re-provision) without human intervention. Reduced downtime significantly.</div>
+            <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">Ansible</span><span class="project-tag">Monitoring</span><span class="project-tag">Event-Driven</span></div>
+        </div>
+        <div class="project-card">
+            <div class="project-icon">&#127758;</div>
+            <div class="project-title">On-Site Germany Deployment</div>
+            <div class="project-desc">3-month on-site deployment at Mercedes-Benz Sindelfingen plant. Resolved infrastructure bottlenecks, optimized CI/CD workflows, and strengthened cross-site coordination during critical delivery phase.</div>
+            <div class="project-tags"><span class="project-tag">DevOps</span><span class="project-tag">CI/CD</span><span class="project-tag">Cross-site</span><span class="project-tag">Sindelfingen</span></div>
+        </div>
+        <div class="project-card" style="grid-column: 1 / -1;">
+            <div class="project-icon">&#128161;</div>
+            <div class="project-title">Patents & Innovation SPOC</div>
+            <div class="project-desc">Department-level Innovation SPOC driving AI/automation adoption across teams. Filed 3 patent applications (1 in grant pipeline, 2 in jury review). Conduct ideation workshops, mentor engineers on innovation practices, and manage the patent filing pipeline.</div>
+            <div class="project-tags"><span class="project-tag">Patents</span><span class="project-tag">Innovation</span><span class="project-tag">Mentoring</span><span class="project-tag">Workshops</span><span class="project-tag">AI Adoption</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- AWARDS -->
+<section class="section" id="awards" style="background: #f1f5f9;">
+    <div class="section-header">
+        <h2>Awards & <span class="accent">Recognition</span></h2>
+    </div>
+    <div class="awards-grid">
+        <div class="award-item">
+            <div class="award-year">2025</div>
+            <div class="award-content"><div class="award-title">Achievement of Excellence Award</div><div class="award-desc">Sustained impact resolving critical pipeline and infrastructure escalations at Mercedes-Benz</div></div>
+        </div>
+        <div class="award-item">
+            <div class="award-year">2024</div>
+            <div class="award-content"><div class="award-title">Bronze Award</div><div class="award-desc">Handling high-priority production escalations under pressure</div></div>
+        </div>
+        <div class="award-item">
+            <div class="award-year">2023</div>
+            <div class="award-content"><div class="award-title">Best Paper Award — ICoAC 2023</div><div class="award-desc">12th International Conference on Advanced Computing, Anna University, Chennai</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-name">Mohammed Shadab</div>
+    <div class="footer-tagline">Platform Engineer | DevOps | Infrastructure Automation | AI Tooling</div>
+    <div class="footer-links">
+        <a href="mailto:mohammedshadab555@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/-mshadab" target="_blank">LinkedIn</a>
+        <a href="https://github.com/MSHADAB-5" target="_blank">GitHub</a>
+    </div>
+    <div class="footer-copy">Built with curiosity and code. &copy; 2026</div>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+// Typing Animation
+const phrases = [
+    'Platform Automation Engineer',
+    'DevOps & Infrastructure at Mercedes-Benz',
+    'Building Self-Healing Systems',
+    'AI-Augmented Operations',
+    'Ansible | Docker | CI/CD | Python'
+];
+let phraseIndex = 0, charIndex = 0, isDeleting = false;
+const typedEl = document.getElementById('typed-text');
+
+function typeEffect() {
+    const current = phrases[phraseIndex];
+    if (isDeleting) {
+        typedEl.textContent = current.substring(0, charIndex--);
+        if (charIndex < 0) { isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; setTimeout(typeEffect, 500); return; }
+    } else {
+        typedEl.textContent = current.substring(0, charIndex++);
+        if (charIndex > current.length) { isDeleting = true; setTimeout(typeEffect, 2000); return; }
+    }
+    setTimeout(typeEffect, isDeleting ? 30 : 60);
+}
+typeEffect();
+
+// Terminal Animation
+const terminalLines = [
+    { type: 'cmd', prompt: '$ ', text: 'ansible-playbook -i inventory/mttf site.yml --limit=bench-farm' },
+    { type: 'output', text: '' },
+    { type: 'output', text: 'PLAY [Deploy MTTF Environment] ************************************************' },
+    { type: 'success', text: 'TASK [provision] : ok=47  changed=12  unreachable=0  failed=0' },
+    { type: 'success', text: 'TASK [configure] : ok=100+ environments provisioned successfully' },
+    { type: 'output', text: '' },
+    { type: 'cmd', prompt: '$ ', text: 'python health_check.py --env=all --auto-heal' },
+    { type: 'info', text: '[INFO] Scanning 100+ environments...' },
+    { type: 'info', text: '[INFO] Degraded: bench-042 (memory: 94%) — triggering recovery...' },
+    { type: 'success', text: '[OK] bench-042 recovered: service restarted, health restored ✓' },
+    { type: 'success', text: '[OK] All environments healthy. MTTR: 0 (auto-healed)' },
+    { type: 'output', text: '' },
+    { type: 'cmd', prompt: '$ ', text: 'jenkins-cli build "MTTF-Pipeline" --branch=main --deploy' },
+    { type: 'info', text: '[Pipeline] Stage: Build → Test → Quality Gate → Deploy' },
+    { type: 'success', text: '[Pipeline] SUCCESS — deployed to 10 programs in 4m 12s ✓' },
+    { type: 'output', text: '' },
+    { type: 'cmd', prompt: '$ ', text: 'curl -X POST teams-bot/api/alert --data \'{"type":"summary"}\'' },
+    { type: 'info', text: '[Azure OpenAI] Generating alert summary via structured prompt...' },
+    { type: 'success', text: '[Bot] Alert summary posted to #infra-ops channel ✓' },
+    { type: 'output', text: '' },
+    { type: 'cmd', prompt: '$ ', text: 'echo "All systems operational. Zero manual interventions today."' },
+    { type: 'success', text: 'All systems operational. Zero manual interventions today. 🚀' },
+];
+
+function animateTerminal() {
+    const body = document.getElementById('terminal-body');
+    body.innerHTML = '';
+    let delay = 0;
+    terminalLines.forEach((line, i) => {
+        delay += line.type === 'cmd' ? 800 : 400;
+        setTimeout(() => {
+            const div = document.createElement('div');
+            div.className = 'terminal-line';
+            div.style.animationDelay = '0s';
+            if (line.type === 'cmd') {
+                div.innerHTML = `<span class="prompt">${line.prompt}</span><span class="cmd">${line.text}</span>`;
+            } else if (line.type === 'success') {
+                div.innerHTML = `<span class="success">${line.text}</span>`;
+            } else if (line.type === 'info') {
+                div.innerHTML = `<span class="info">${line.text}</span>`;
+            } else {
+                div.innerHTML = `<span class="output">${line.text}</span>`;
+            }
+            body.appendChild(div);
+            body.scrollTop = body.scrollHeight;
+        }, delay);
+    });
+    // Loop after completion
+    setTimeout(animateTerminal, delay + 5000);
+}
+
+// Intersection Observer for animations
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            // Skill bars
+            if (entry.target.classList.contains('skill-bar-fill')) {
+                entry.target.style.width = entry.target.dataset.width;
+            }
+        }
+    });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('.timeline-item').forEach(el => observer.observe(el));
+document.querySelectorAll('.skill-bar-fill').forEach(el => observer.observe(el));
+
+// Start terminal when visible
+const terminalObs = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) { animateTerminal(); terminalObs.disconnect(); }
+}, { threshold: 0.3 });
+terminalObs.observe(document.querySelector('.terminal'));
+
+// Contact Modal
+function openContactModal(e) {
+    e.preventDefault();
+    document.getElementById('contactModal').classList.add('active');
+}
+function closeContactModal(e) {
+    if (e) e.preventDefault();
+    document.getElementById('contactModal').classList.remove('active');
+}
+function copyToClipboard(text, element) {
+    navigator.clipboard.writeText(text).then(() => {
+        element.classList.add('copied');
+        const toast = document.getElementById('copiedToast');
+        toast.classList.add('show');
+        setTimeout(() => { element.classList.remove('copied'); toast.classList.remove('show'); }, 1500);
+    });
+}
+// Close modal on Escape key
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeContactModal(); });
+</script>
+</body>
+</html>
