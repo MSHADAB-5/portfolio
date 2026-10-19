@@ -33,11 +33,11 @@ export function runCommand(input: string, history: readonly string[] = []): Comm
     case 'experience':
       return { lines: EXPERIENCE_TIMELINE.flatMap((entry) => [`${entry.date} / ${entry.title}`, `  ${entry.company}`, `  ${entry.description}`, '']) };
     case 'skills':
-      return { lines: SKILL_CATEGORIES.flatMap((group) => [group.title.toUpperCase(), ...group.items.map((item) => `  ${item.name} / ${item.tier}`), '']) };
+      return { lines: SKILL_CATEGORIES.flatMap((group) => [group.title.toUpperCase(), ...group.items.map((item) => item.tier ? `  ${item.name} / ${item.tier}` : `  ${item.name}`), '']) };
     case 'projects':
       return { lines: PROJECTS.flatMap((project) => [`${project.index} / ${project.title}`, `  ${project.description}`, `  ${project.tags.join(' · ')}`, '']) };
     case 'awards':
-      return { tone: 'success', lines: AWARDS.flatMap((award) => [`${award.year} / ${award.title}`, `  ${award.description}`, '']) };
+      return { tone: 'success', lines: AWARDS.flatMap((award) => [`${award.year ?? 'CERT'} / ${award.title}`, `  ${award.description}`, '']) };
     case 'contact':
       return { action: 'contact', lines: ['Opening contact sheet...', PROFILE.email, PROFILE.linkedinUrl] };
     case 'ls':

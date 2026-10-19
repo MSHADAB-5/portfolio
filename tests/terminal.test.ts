@@ -34,4 +34,26 @@ describe('portfolio command parser', () => {
     expect(completeCommand('cat ')).toEqual(['cat resume.md']);
     expect(completeCommand('invalid')).toEqual([]);
   });
+  it('renders both new certifications without undefined or null', () => {
+    const output = runCommand('awards').lines.join('\n');
+    expect(output).toContain('Impact Mentor Training (IMT)');
+    expect(output).toContain('ISTQB Certified Tester');
+    expect(output).not.toContain('undefined');
+    expect(output).not.toContain('null');
+  });
+  it('lists the new observability tools without an undefined tier', () => {
+    const output = runCommand('skills').lines.join('\n');
+    for (const tool of ['Grafana', 'Prometheus', 'Datadog', 'ELK Stack', 'Dozzle', 'Agentic AI']) {
+      expect(output).toContain(tool);
+    }
+    expect(output).not.toContain('undefined');
+    expect(output).not.toContain('null');
+  });
+  it('omits the Germany project while keeping it in experience', () => {
+    const projects = runCommand('projects').lines.join('\n');
+    expect(projects).not.toContain('Germany');
+    expect(projects).not.toContain('Sindelfingen');
+    const experience = runCommand('experience').lines.join('\n');
+    expect(experience).toContain('Sindelfingen');
+  });
 });

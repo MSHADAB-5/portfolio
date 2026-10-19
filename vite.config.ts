@@ -15,7 +15,7 @@ export default defineConfig({
       const fallback = [
         ...PROJECTS.map((project) => `<article><h3>${escape(project.title)}</h3><p>${escape(project.description)}</p></article>`),
         ...SKILL_CATEGORIES.map((category) => `<article><h3>${escape(category.title)}</h3><p>${category.items.map((item) => escape(item.name)).join(' / ')}</p></article>`),
-        ...AWARDS.map((award) => `<article><h3>${escape(award.year)} / ${escape(award.title)}</h3><p>${escape(award.description)}</p></article>`),
+        ...AWARDS.map((award) => `<article><h3>${escape(award.year ?? 'Certification')} / ${escape(award.title)}</h3><p>${escape(award.description)}</p></article>`),
       ].join('');
       return html.replace('<!-- STATIC_RESUME -->',
         `<noscript><section class="container static-resume"><h2>Projects, Skills &amp; Recognition</h2>${fallback}</section></noscript>`);

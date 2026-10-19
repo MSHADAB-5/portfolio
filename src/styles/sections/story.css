@@ -68,7 +68,7 @@
 .chips-label { color: #626c80; font: 8px var(--font-mono); }
 .terminal-chip { font: 8px var(--font-mono); background: #ffffff04; border: 1px solid #ffffff0e; border-radius: 5px; padding: 5px 7px; color: #828d9f; }
 .terminal-chip:hover { color: #64d2ff; border-color: #64d2ff44; }
-.terminal-body { height: 340px; overflow: auto; overscroll-behavior: contain; padding: 24px; font: 11px/1.9 var(--font-mono); color: #78859c; scrollbar-width: thin; scrollbar-color: #29394c #080b10; }
+.terminal-body { height: 340px; overflow: auto; overscroll-behavior-y: auto; padding: 24px; font: 11px/1.9 var(--font-mono); color: #78859c; scrollbar-width: thin; scrollbar-color: #29394c #080b10; }
 .terminal-line { white-space: pre-wrap; overflow-wrap: anywhere; }
 .line-cmd { color: #e0e7ef; margin-top: 6px; }.line-success { color: #62c990; }.line-info { color: #66b7db; }.line-warn { color: #dca859; }
 .terminal-input-bar { display: flex; align-items: center; gap: 12px; border-top: 1px solid #ffffff12; padding: 16px 20px; background: #0e1219; }

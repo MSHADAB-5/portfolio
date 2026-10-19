@@ -1,5 +1,21 @@
 import { el } from '../core/dom';
-import { motionQuery, qualityTier } from '../core/perf';
+import { finePointer, motionQuery, qualityTier } from '../core/perf';
+
+function shouldLoadModel() {
+  if (qualityTier() !== 'high' || !finePointer.matches) return false;
+  const connection = (navigator as Navigator & {
+    connection?: { effectiveType?: string; saveData?: boolean };
+  }).connection;
+  return !connection?.saveData && !['slow-2g', '2g', '3g'].includes(connection?.effectiveType ?? '');
+}
+
+function creditLink(label: string, href: string) {
+  const link = el('a', 'fleet-credit-link', label);
+  link.href = href;
+  link.target = '_blank';
+  link.rel = 'noreferrer';
+  return link;
+}
 
 function mercedesMark() {
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -18,24 +34,33 @@ function mercedesMark() {
 
 export function createFleetVisual() {
   const stage = el('div', 'fleet-visual');
-  stage.setAttribute('aria-label', 'Mercedes-themed GT-inspired concept car with illustrative diagnostic scan');
+  stage.setAttribute('aria-label', '2023 Mercedes-AMG ONE model by Ddiaz Design, licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0');
   const brand = el('div', 'fleet-brand');
   const wordmark = el('div', 'fleet-brand-copy');
   wordmark.append(el('span', '', 'MERCEDES-BENZ'), el('small', '', 'ENGINEERING / CONNECTED ENVIRONMENTS'));
   brand.append(mercedesMark(), wordmark);
   const fallback = el('img', 'fleet-fallback');
-  fallback.src = `${import.meta.env.BASE_URL}gt-concept.svg`;
+  fallback.src = `${import.meta.env.BASE_URL}models/amg-one-poster.png`;
   fallback.alt = '';
   const canvas = el('canvas', 'fleet-canvas');
   canvas.setAttribute('aria-hidden', 'true');
   const status = el('div', 'fleet-scan-label');
   status.setAttribute('aria-hidden', 'true');
-  status.append(el('span', 'fleet-scan-dot'), el('span', 'fleet-scan-status', 'ENVIRONMENT HEALTH / SIMULATION'));
-  stage.append(brand, fallback, canvas, status,
-    el('span', 'fleet-concept-label', 'GT-INSPIRED CONCEPT / NOT AN OFFICIAL VEHICLE MODEL'));
+  status.append(el('span', 'fleet-scan-dot'), el('span', 'fleet-scan-status', 'ENVIRONMENT HEALTH / NOMINAL'));
+  const credits = el('div', 'fleet-credits');
+  credits.append(
+    document.createTextNode('3D model: '),
+    creditLink('Ddiaz Design', 'https://sketchfab.com/ddiaz-design'),
+    document.createTextNode(' · '),
+    creditLink('Sketchfab source', 'https://sketchfab.com/3d-models/2023-mercedes-benz-amg-one-0f75e0705a1f455585813859d901458a'),
+    document.createTextNode(' · '),
+    creditLink('CC BY-NC-SA 4.0', 'https://creativecommons.org/licenses/by-nc-sa/4.0/'),
+    document.createTextNode(' · Modified: normalized, reframed and relit'),
+  );
+  stage.append(brand, fallback, canvas, status, credits);
   let dispose: (() => void) | undefined;
   const observer = new IntersectionObserver(([entry]) => {
-    if (!entry?.isIntersecting || qualityTier() === 'low') return;
+    if (!entry?.isIntersecting || !shouldLoadModel()) return;
     observer.disconnect();
     void import('../gl/Fleet').then(async ({ mountFleet }) => {
       if (!motionQuery.matches) dispose = await mountFleet(canvas, stage);

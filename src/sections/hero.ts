@@ -36,10 +36,6 @@ export function setupHero() {
       trigger: '#about', start: 'top top', end: 'bottom bottom', scrub: true,
       onUpdate: (s) => scene?.setProgress(s.progress),
     });
-    gsap.to('#hero-copy', {
-      y: -90, opacity: 0, ease: 'none',
-      scrollTrigger: { trigger: '#about', start: 'top -12%', end: 'bottom 85%', scrub: true },
-    });
   });
   const typed = requireEl('#typed-text');
   let phrase = 0;

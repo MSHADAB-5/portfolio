@@ -12,7 +12,7 @@ export function setupScroll() {
     lenis?.destroy();
     lenis = undefined;
     if (!motionQuery.matches) {
-      lenis = new Lenis({ duration: 1.05, smoothWheel: true, anchors: { offset: -100 } });
+      lenis = new Lenis({ duration: 1.05, smoothWheel: true, allowNestedScroll: true, anchors: { offset: -100 } });
       lenis.on('scroll', ScrollTrigger.update);
     }
   };

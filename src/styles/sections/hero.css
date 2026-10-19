@@ -20,7 +20,7 @@
 .hero-canvas.is-ready { opacity: 1; }
 .hero-vignette {
   z-index: -1; pointer-events: none;
-  background: linear-gradient(90deg, #000e 0%, #0009 30%, transparent 78%),
+  background: linear-gradient(90deg, #000f 0%, #000d 38%, #0007 62%, transparent 85%),
     linear-gradient(0deg,#000 0%, transparent 22%, transparent 80%,#0007);
 }
 .hero-container { height: 100%; display: flex; align-items: center; position: relative; }
@@ -36,7 +36,12 @@
 .typewriter-prefix { color: var(--text-muted); }
 .typewriter-cursor { animation: blinkCursor 1s step-end infinite; }
 @keyframes blinkCursor { 50% { opacity: 0; } }
-.hero-description { color: #989ba8; font-size: 13px; max-width: 480px; line-height: 1.9; margin-top: 16px; }
+.hero-description {
+  color: var(--text-primary); font-size: clamp(16px, 1.15vw, 18px); max-width: 58ch;
+  line-height: 1.6; margin-top: 20px; padding: 16px 20px;
+  background: rgba(8, 8, 10, 0.72); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-hairline); border-radius: var(--radius-md);
+}
 .hero-cta-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 28px; }
 .hero-cta-row .btn-apple-quiet { font-size: 10px; gap: 8px; }
 .hero-stats-grid { display: grid; grid-template-columns: repeat(4,1fr); max-width: 615px; margin-top: 48px; border-top: 1px solid #ffffff20; padding-top: 24px; gap: 18px; }
@@ -59,15 +64,24 @@
 .scroll-cue-label { font: 7px var(--font-mono); letter-spacing: .2em; color: #777e90; }
 .scroll-cue-line { height: 25px; width: 1px; background: linear-gradient(#64d2ff,transparent); }
 @media (min-width: 1600px) { .hero-copy { padding-top: 150px; } .telemetry-hud { right: 7vw; bottom: 14vh; } }
+@media (max-height: 860px) and (min-width: 801px) {
+  .hero-copy { padding: 84px 0 64px; }
+  .hero-badges { gap: 10px; margin-bottom: 18px; }
+  .hero-name-line { margin-bottom: 12px; }
+  .hero-typewriter { margin-top: 16px; }
+  .hero-description { margin-top: 14px; padding: 12px 16px; }
+  .hero-cta-row { margin-top: 20px; }
+  .hero-stats-grid { margin-top: 30px; padding-top: 18px; }
+}
 @media (max-width: 1100px) { .telemetry-hud { width: 240px; bottom: 100px; opacity: .8; } .hero-cta-row .btn-apple-quiet { display: none; } }
 @media (max-width: 800px) {
   .hero-section { height: auto; }
-  .hero-stage { position: relative; height: auto; min-height: 980px; }
+  .hero-stage { position: relative; height: auto; min-height: 1040px; }
   .hero-container { height: auto; }
-  .hero-copy { width: 100%; padding-top: 135px; padding-bottom: 260px; }
+  .hero-copy { width: 100%; padding-top: 135px; padding-bottom: 300px; }
   .hero-title { font-size: clamp(52px,10vw,80px); max-width: 630px; }
   .hero-name-line { font-size: 21px; }
-  .hero-description { max-width: 460px; font-size: 13px; }
+  .hero-description { padding: 14px 16px; }
   .hero-stats-grid { gap: 12px; margin-top: 36px; }
   .hero-stat-value { font-size: 29px; }
   .hero-stat-label { font-size: 7px; line-height: 1.6; }

@@ -22,12 +22,7 @@
 .chat-action { font: 8px var(--font-mono); color: #6aa8c6; margin-top: 15px; }
 .heal-state { font: 9px var(--font-mono); color: #6c9787; text-align: center; margin: 35px 0; }
 .visual-self-healing .node-status-grid { transform: perspective(800px) rotateX(30deg) rotateZ(-5deg); }
-.corridor-sketch { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 30px; }
-.city-code { font: 30px var(--font-mono); letter-spacing: -.05em; color: #b3b7b3; }
-.corridor-route { color: #a18455; font-size: 15px; }
-.route-caption { font: 8px var(--font-mono); color: #776d5d; text-align: center; margin-top: 20px; }
-.route-duration { color: #d4c8ab; font-size: 22px; text-align: center; margin-top: 44px; letter-spacing: -.04em; }
-.route-date { font: 8px var(--font-mono); text-align: center; color: #786e59; margin-top: 15px; }
+
 .patent-count { text-align: center; font-size: 150px; font-weight: 350; letter-spacing: -.09em; line-height: 1; color: #b2b9cb; text-shadow: 0 0 100px #7486b933; }
 .patent-states { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 32px; color: #7886a0; font: 9px var(--font-mono); }
 .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 65px; align-items: start; }
@@ -37,8 +32,9 @@
 .orbit-core-glow::before, .orbit-core-glow::after { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 1px solid #6ba4bf15; transform: rotateX(65deg) rotateY(-20deg); }
 .orbit-core-glow::after { transform: rotateY(65deg) rotateX(-20deg); }
 .orbit-sphere { position: absolute; inset: 0; perspective: 700px; transform-style: preserve-3d; }
-.orbit-tool { position: absolute; left: 50%; top: 50%; display: flex; flex-direction: column; align-items: center; gap: 8px; width: 80px; border-radius: 14px; border: 1px solid #ffffff15; background: #111924ef; padding: 14px 8px 10px; box-shadow: 0 5px 20px #0004; }
-.orbit-tool svg { width: 24px; height: 24px; fill: var(--tool-color); }
+.orbit-tool { position: absolute; left: 50%; top: 50%; display: flex; flex-direction: column; align-items: center; gap: 6px; width: 68px; border-radius: 12px; border: 1px solid #ffffff15; background: #111924ef; padding: 11px 6px 8px; box-shadow: 0 5px 20px #0004; }
+.orbit-tool svg, .orbit-tool-image { width: 22px; height: 22px; }
+.orbit-tool svg { fill: var(--tool-color); }
 .orbit-tool span { font: 7px var(--font-mono); white-space: nowrap; color: #a5aec1; }
 .orbit-tool:hover, .orbit-tool:focus-visible { border-color: var(--tool-color); }
 .orbit-caption { position: absolute; top: 100%; left: 0; width: 100%; text-align: center; display: flex; flex-direction: column; gap: 12px; font: 7px var(--font-mono); letter-spacing: .08em; color: #475a73; }
@@ -54,6 +50,7 @@
 .awards-section { padding-top: 70px; }
 .award-row { display: grid; grid-template-columns: 110px 1fr 35px; align-items: start; gap: 30px; padding: 38px 0; border-top: 1px solid #ffffff20; transition: background .3s; }
 .award-year { font: 32px var(--font-mono); letter-spacing: -.06em; color: #63728a; }
+.award-year-cert { font-size: 11px; letter-spacing: .14em; padding-top: 10px; color: #7d8ba1; }
 .award-badge { font: 8px var(--font-mono); text-transform: uppercase; color: #7d8ba1; letter-spacing: .08em; margin-bottom: 15px; }
 .award-copy h3 { font-size: 28px; line-height: 1.2; font-weight: 500; letter-spacing: -.035em; }
 .award-copy p { font-size: 12px; color: #8b94a4; margin-top: 14px; line-height: 1.8; }
@@ -78,10 +75,17 @@
   .project-title { font-size: 31px; }
   .code-sketch { font-size: 10px; }
   .skills-layout { grid-template-columns: 1fr; gap: 80px; }
-  .orbit-stage { max-width: 450px; margin: auto; position: relative; top: 0; }
+  .orbit-stage { max-width: 450px; margin: auto; position: relative; top: 0; aspect-ratio: auto; }
+  .orbit-core-glow { display: none; }
+  .orbit-sphere { position: relative; inset: auto; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; perspective: none; transform-style: flat; }
+  .orbit-tool { position: relative; left: auto; top: auto; width: 100%; min-height: 64px; transform: none !important; opacity: 1 !important; z-index: auto !important; padding: 9px 4px; }
+  .orbit-tool span { font-size: 7px; line-height: 1.25; white-space: normal; text-align: center; }
+  .orbit-caption { position: static; margin-top: 14px; }
+  .orbit-caption > span:first-child { display: none; }
   .orbit-column { height: auto; }
   .award-row { grid-template-columns: 62px 1fr; gap: 18px; }
   .award-year { font-size: 22px; }
+  .award-year-cert { font-size: 9px; padding-top: 6px; }
   .award-copy h3 { font-size: 23px; }
   .award-symbol { display: none; }
 }

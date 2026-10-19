@@ -36,10 +36,6 @@ function projectVisual(project: ProjectItem) {
     );
   } else if (project.visualType === 'self-healing') {
     visual.append(el('div', 'heal-state', 'DETECT → DIAGNOSE → RECOVER'), createStatusGrid(64), el('div', 'code-result', 'Autonomous recovery / service restart → re-provision'));
-  } else if (project.visualType === 'germany-ops') {
-    const map = el('div', 'corridor-sketch');
-    map.append(el('span', 'city-code', 'BLR'), el('span', 'corridor-route', '·················→'), el('span', 'city-code', 'STR'));
-    visual.append(map, el('div', 'route-caption', 'BENGALURU ⇄ SINDELFINGEN'), el('div', 'route-duration', '03 months / on-site'), el('div', 'route-date', 'OCT — DEC 2025'));
   } else {
     visual.append(el('div', 'patent-count', '03*'));
     const list = el('div', 'patent-states');
