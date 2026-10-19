@@ -1,0 +1,76 @@
+.pipeline-section { overflow: clip; background: radial-gradient(ellipse at 30% 50%,#13213538,transparent 65%); }
+.pipeline-top-bar { display: flex; justify-content: space-between; gap: 36px; align-items: flex-end; margin-bottom: 50px; }
+.pipeline-top-bar h2 { max-width: 680px; margin-top: 18px; }
+.pipeline-progress-pill { flex-shrink: 0; display: flex; flex-direction: column; gap: 10px; font: 8px var(--font-mono); text-align: right; }
+.pipeline-stage-counter { color: #c2cad9; }
+.pipeline-status-badge { color: #63798a; font-size: 7px; letter-spacing: .1em; }
+.pipeline-viewport { padding-left: max(calc((100vw - 1240px) / 2 + 64px),5vw); }
+.pipeline-track { position: relative; width: max-content; padding-top: 90px; }
+.pipeline-svg-wire { position: absolute; top: 0; width: 100%; height: 110px; overflow: visible; }
+.pipeline-cards { display: flex; gap: 24px; }
+.pipeline-card { width: 340px; padding: 28px; background: linear-gradient(145deg,#151a23,#080b11); border: 1px solid #ffffff16; border-radius: 22px; transition: border-color .4s; }
+.pipeline-card.is-active { border-color: #64d2ff65; background: linear-gradient(145deg,#18283b,#0a1018); }
+.pipeline-step { display: block; font: 46px var(--font-mono); color: #33465c; letter-spacing: -.08em; margin-bottom: 22px; }
+.is-active .pipeline-step { color: #82b7d1; }
+.pipeline-tool { font: 8px var(--font-mono); text-transform: uppercase; color: #648da9; }
+.pipeline-title { font-size: 22px; font-weight: 500; line-height: 1.2; letter-spacing: -.03em; margin: 14px 0; }
+.pipeline-description { min-height: 100px; font-size: 12px; line-height: 1.9; color: #848b9d; }
+.pipeline-command { display: block; padding: 14px 0 0; margin-top: 18px; border-top: 1px solid #ffffff10; color: #6386a1; font-size: 8px; overflow-wrap: anywhere; }
+.experience-layout { display: grid; grid-template-columns: 32% 1fr; gap: 90px; }
+.experience-sticky-col { position: relative; }
+.experience-sticky-card { position: sticky; top: 150px; padding: 30px 0; }
+.sticky-year-label { font: 8px var(--font-mono); letter-spacing: .15em; color: #637083; }
+.sticky-year-display { font-size: clamp(75px,9vw,132px); line-height: 1.15; letter-spacing: -.08em; font-weight: 450; margin: 14px 0; color: #aeb8cb; }
+.sticky-date-range { color: #7a8ba5; font: 11px var(--font-mono); }
+.sticky-location-pill { display: inline-flex; gap: 8px; align-items: center; margin-top: 24px; border: 1px solid #ffffff17; border-radius: 99px; padding: 10px 15px; color: #a1aab7; font-size: 10px; }
+.sticky-location-pill span { color: #30d158; font-size: 7px; }
+.experience-rail-progress { height: 1px; background: #ffffff17; margin-top: 40px; width: 85%; }
+.experience-rail-fill { height: 1px; background: #64d2ff; width: 100%; transform: scaleX(0); transform-origin: left; }
+.experience-card { padding: 36px 0 60px; border-top: 1px solid #ffffff19; }
+.exp-card-meta { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 28px; }
+.exp-date { font: 10px var(--font-mono); color: #6598ba; }
+.exp-card-meta .mono-tag { font-size: 7px; }
+.exp-title { font-size: 28px; font-weight: 550; line-height: 1.2; letter-spacing: -.035em; margin-bottom: 14px; }
+.exp-company { font-size: 11px; color: #808a9d; margin-bottom: 22px; }
+.exp-desc { color: #9b9fad; font-size: 13px; line-height: 1.85; }
+.exp-highlights { list-style: none; margin-top: 24px; }
+.exp-highlights li { position: relative; padding-left: 15px; margin-top: 12px; color: #6f7a8d; font-size: 11px; line-height: 1.8; }
+.exp-highlights li::before { content: '+'; color: #477c9e; position: absolute; left: 0; }
+.globe-section { overflow: clip; padding-top: 40px; }
+.globe-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 20px; }
+.globe-copy .eyebrow { margin-bottom: 20px; font-size: 9px; }
+.globe-copy .display-xl { font-size: clamp(38px,4vw,54px); }
+.globe-lead { color: #878e9f; font-size: 13px; line-height: 1.9; max-width: 450px; margin-top: 24px; }
+.corridor-cards { margin-top: 35px; display: flex; flex-direction: column; gap: 12px; }
+.corridor-node-card { text-align: left; background: #11151c55; border: 1px solid #ffffff13; border-radius: 15px; padding: 20px; transition: .4s; }
+.corridor-node-card.is-active { background: #111e2d70; border-color: #30618b70; }
+.corridor-node-top { display: flex; justify-content: space-between; gap: 8px; font: 7px var(--font-mono); color: #6e8198; margin-bottom: 14px; }
+.corridor-ping { color: #63a886; font-size: 6px; }.corridor-ping.cyan { color: #64a0bc; }
+.corridor-node-title { font-size: 12px; margin-bottom: 8px; }
+.corridor-node-desc { color: #748094; font-size: 10px; line-height: 1.8; }
+.globe-canvas-shell { position: relative; aspect-ratio: 1; }
+.globe-canvas-shell::before { content: ''; position: absolute; inset: 9%; background: radial-gradient(circle at 35% 30%,#12324f,#050910 65%); border: 1px solid #3a69863b; border-radius: 50%; box-shadow: 0 0 90px #2997ff0a; }
+#cobe-canvas { display: block; position: relative; width: 100%; height: 100%; opacity: 0; touch-action: pan-y; cursor: grab; transition: opacity 1s; }
+#cobe-canvas.is-ready { opacity: 1; }
+#cobe-canvas:active { cursor: grabbing; }
+.globe-arc-badge { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); display: flex; gap: 7px; align-items: center; white-space: nowrap; font: 7px var(--font-mono); color: #6a8aa3; padding: 10px 16px; border: 1px solid #ffffff14; border-radius: 99px; background: #080d17; }
+.arc-dot { background: #30d158; width: 4px; height: 4px; border-radius: 50%; }
+@media (max-width: 800px), (prefers-reduced-motion: reduce) {
+  .pipeline-top-bar { display: block; }
+  .pipeline-progress-pill { display: none; }
+  .pipeline-viewport { padding: 0 var(--section-pad-x); }
+  .pipeline-track { width: 100%; padding: 0; }
+  .pipeline-cards { flex-direction: column; }
+  .pipeline-card { width: 100%; }
+  .pipeline-svg-wire { display: none; }
+  .pipeline-description { min-height: 0; }
+}
+@media (max-width: 800px) {
+  .experience-layout { grid-template-columns: 1fr; gap: 0; }
+  .experience-sticky-col { display: none; }
+  .exp-title { font-size: 25px; }
+  .exp-highlights { display: none; }
+  .globe-grid { grid-template-columns: 1fr; gap: 40px; }
+  .globe-stage-wrap { max-width: 500px; width: 100%; margin: auto; }
+  .globe-copy .display-xl { font-size: 39px; }
+}
