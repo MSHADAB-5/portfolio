@@ -24,13 +24,14 @@ export function createDialog(root: HTMLElement, initialFocus: HTMLElement) {
     },
     close() {
       if (!dialog.isOpen) return;
-      root.classList.remove('is-open');
-      root.setAttribute('aria-hidden', 'true');
       inertSiblings.forEach(({ node, wasInert }) => { node.inert = wasInert; });
       inertSiblings = [];
       lockScroll(false);
       active = undefined;
       previousFocus?.focus({ preventScroll: true });
+      if (root.contains(document.activeElement)) (document.activeElement as HTMLElement)?.blur();
+      root.classList.remove('is-open');
+      root.setAttribute('aria-hidden', 'true');
     },
   };
   root.addEventListener('click', (e) => { if (e.target === root) dialog.close(); });

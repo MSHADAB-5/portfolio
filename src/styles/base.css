@@ -41,7 +41,6 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
   line-height: 1.55;
-  selection-background-color: var(--accent-blue);
 }
 
 ::selection {
@@ -141,3 +140,8 @@ input {
   white-space: nowrap;
   border: 0;
 }
+
+.static-resume { padding-top: 60px; padding-bottom: 100px; }
+.static-resume article { max-width: 800px; margin-top: 32px; }
+.static-resume h3 { font-size: 20px; margin-bottom: 12px; }
+.static-resume p { font-size: 15px; line-height: 1.8; color: var(--text-secondary); }

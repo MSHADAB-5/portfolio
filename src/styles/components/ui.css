@@ -79,7 +79,7 @@ code, kbd { font-family: var(--font-mono); }
 .palette-input { min-width: 0; width: 100%; font-size: 13px; background: none; border: 0; padding: 6px 0; }
 .palette-esc-hint, .palette-footer kbd { color: var(--text-muted); font-size: 9px; border: 1px solid #ffffff18; border-radius: 4px; padding: 2px 4px; }
 .palette-results { max-height: 45vh; overflow: auto; padding: 10px; }
-.palette-item { width: 100%; border: 0; display: flex; align-items: center; justify-content: space-between; padding: 14px; border-radius: 10px; background: none; text-align: left; font-size: 13px; }
+.palette-item { width: 100%; border: 0; display: flex; align-items: center; justify-content: space-between; padding: 14px; border-radius: 10px; background: none; text-align: left; font-size: 13px; cursor: pointer; }
 .palette-item[aria-selected='true'] { background: #2997ff20; }
 .palette-item small { font: 9px var(--font-mono); color: var(--text-muted); }
 .palette-footer { display: flex; gap: 20px; padding: 14px 20px; border-top: 1px solid var(--border-hairline); font-size: 10px; color: var(--text-secondary); }

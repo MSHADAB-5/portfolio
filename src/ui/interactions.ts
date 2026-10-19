@@ -4,6 +4,7 @@ import { requireEl } from '../core/dom';
 
 export function setupInteractions() {
   const header = requireEl('#site-header');
+  header.addEventListener('focusin', () => header.classList.remove('nav-hidden'));
   const toggle = requireEl<HTMLButtonElement>('#nav-mobile-toggle');
   const links = requireEl('#nav-links');
   toggle.addEventListener('click', () => {

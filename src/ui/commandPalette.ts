@@ -41,8 +41,8 @@ export function setupPalette(openContact: () => void) {
   let active = 0;
   const execute = (action: Action) => { dialog.close(); action.run(); };
   const highlight = () => {
-    [...results.children].forEach((node, i) => node.setAttribute('aria-selected', String(i === active)));
-    const selected = results.children[active];
+    [...results.querySelectorAll('[role="option"]')].forEach((node, i) => node.setAttribute('aria-selected', String(i === active)));
+    const selected = filtered.length ? results.children[active] : undefined;
     if (selected) {
       input.setAttribute('aria-activedescendant', selected.id);
       selected.scrollIntoView({ block: 'nearest' });
