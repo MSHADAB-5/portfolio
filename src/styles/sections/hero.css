@@ -1,0 +1,81 @@
+.preloader { display: none; }
+.is-loading .preloader {
+  display: flex; position: fixed; inset: 0; z-index: 10000; background: #050609;
+  align-items: center; justify-content: center; clip-path: inset(0);
+}
+.preloader-inner { width: min(620px,82vw); font-family: var(--font-mono); }
+.preloader-top { display: flex; justify-content: space-between; font-size: 9px; color: var(--text-secondary); padding-bottom: 25px; border-bottom: 1px solid #ffffff18; }
+.preloader-brand span, .log-ok { color: var(--accent-blue); }
+.preloader-status { color: var(--accent-green); font-size: 8px; }
+.preloader-log { padding: 35px 0 45px; font-size: 10px; line-height: 2.5; color: #858896; }
+.preloader-bottom { display: flex; align-items: flex-end; gap: 25px; }
+.preloader-bar-track { flex: 1; height: 1px; background: #ffffff18; }
+.preloader-bar-fill { height: 1px; background: var(--accent-cyan); width: 0; }
+.preloader-counter { font-size: 65px; line-height: .8; letter-spacing: -.08em; }
+.hero-section { position: relative; height: 180svh; }
+.hero-stage { position: sticky; top: 0; min-height: 820px; height: 100svh; overflow: hidden; isolation: isolate; }
+.hero-canvas, .hero-poster-fallback, .hero-vignette { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -3; }
+.hero-poster-fallback { background: #020408 url('/hero-poster.svg') center / cover; }
+.hero-canvas { z-index: -2; opacity: 0; transition: opacity 1.5s; }
+.hero-canvas.is-ready { opacity: 1; }
+.hero-vignette {
+  z-index: -1; pointer-events: none;
+  background: linear-gradient(90deg, #000e 0%, #0009 30%, transparent 78%),
+    linear-gradient(0deg,#000 0%, transparent 22%, transparent 80%,#0007);
+}
+.hero-container { height: 100%; display: flex; align-items: center; position: relative; }
+.hero-copy { width: min(850px,78%); padding: 130px 0 100px; }
+.hero-badges { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
+.hero-role-pill { font-size: 11px; color: #b3b5bf; letter-spacing: .015em; }
+.hero-badges .eyebrow { font-size: 9px; color: #aeb0ba; }
+.hero-name-line { display: block; font-size: 24px; letter-spacing: -.03em; font-weight: 450; margin-bottom: 20px; }
+.hero-name-line .text-accent-gradient { color: white; background: none; -webkit-text-fill-color: currentColor; }
+.hero-statement-line { display: block; max-width: 800px; }
+.hero-title { font-size: clamp(60px,7.2vw,104px); font-weight: 620; letter-spacing: -.055em; line-height: 1; }
+.hero-typewriter { display: flex; align-items: center; gap: 8px; margin-top: 26px; font: 10px var(--font-mono); min-height: 20px; color: var(--accent-cyan); }
+.typewriter-prefix { color: var(--text-muted); }
+.typewriter-cursor { animation: blinkCursor 1s step-end infinite; }
+@keyframes blinkCursor { 50% { opacity: 0; } }
+.hero-description { color: #989ba8; font-size: 13px; max-width: 480px; line-height: 1.9; margin-top: 16px; }
+.hero-cta-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 28px; }
+.hero-cta-row .btn-apple-quiet { font-size: 10px; gap: 8px; }
+.hero-stats-grid { display: grid; grid-template-columns: repeat(4,1fr); max-width: 615px; margin-top: 48px; border-top: 1px solid #ffffff20; padding-top: 24px; gap: 18px; }
+.hero-stat-value { font-size: 31px; font-weight: 450; letter-spacing: -.06em; color: #e4e7ef; line-height: 1; }
+.stat-suffix, .stat-sup { color: #727787; font-size: .65em; }
+.hero-stat-label { font: 8px var(--font-mono); color: #7a7f90; text-transform: uppercase; letter-spacing: .06em; margin-top: 9px; }
+.telemetry-hud { position: absolute; bottom: 100px; right: 3.5vw; width: 285px; padding: 16px; border: 1px solid #ffffff19; border-radius: 12px; background: #080d16a6; backdrop-filter: blur(18px); font-family: var(--font-mono); box-shadow: 0 10px 60px #0005; }
+.hud-header { display: flex; align-items: center; gap: 7px; font-size: 7px; margin-bottom: 16px; color: #b0b4c2; }
+.hud-led { width: 5px; height: 5px; border-radius: 50%; background: var(--accent-green); box-shadow: 0 0 10px #30d158; }
+.hud-fleet { margin-left: auto; color: #30d158; font-size: 7px; }
+.hud-row { display: flex; justify-content: space-between; font-size: 7px; margin-bottom: 10px; }
+.hud-key { color: #626b80; }
+.hud-val { color: #afb5c5; }
+.hud-state-nominal { color: var(--accent-cyan); }
+.hud-log { font-size: 7px; color: #818b9f; line-height: 1.8; border-top: 1px solid #ffffff0e; padding-top: 10px; min-height: 36px; overflow-wrap: anywhere; }
+[data-state='degraded'] .hud-led { background: var(--accent-amber); }
+[data-state='remediating'] .hud-led { background: var(--accent-red); }
+[data-state='restored'] #hud-state { color: var(--accent-green); }
+.hero-scroll-cue { position: absolute; bottom: 30px; left: 50%; display: flex; flex-direction: column; gap: 15px; align-items: center; transform: translateX(-50%); }
+.scroll-cue-label { font: 7px var(--font-mono); letter-spacing: .2em; color: #777e90; }
+.scroll-cue-line { height: 25px; width: 1px; background: linear-gradient(#64d2ff,transparent); }
+@media (min-width: 1600px) { .hero-copy { padding-top: 150px; } .telemetry-hud { right: 7vw; bottom: 14vh; } }
+@media (max-width: 1100px) { .telemetry-hud { width: 240px; bottom: 100px; opacity: .8; } .hero-cta-row .btn-apple-quiet { display: none; } }
+@media (max-width: 800px) {
+  .hero-section { height: auto; }
+  .hero-stage { position: relative; height: auto; min-height: 980px; }
+  .hero-container { height: auto; }
+  .hero-copy { width: 100%; padding-top: 135px; padding-bottom: 260px; }
+  .hero-title { font-size: clamp(52px,10vw,80px); max-width: 630px; }
+  .hero-name-line { font-size: 21px; }
+  .hero-description { max-width: 460px; font-size: 13px; }
+  .hero-stats-grid { gap: 12px; margin-top: 36px; }
+  .hero-stat-value { font-size: 29px; }
+  .hero-stat-label { font-size: 7px; line-height: 1.6; }
+  .hero-role-pill { font-size: 10px; }
+  .hero-vignette { background: linear-gradient(0deg,#000, transparent 27%,#000a 80%); }
+  .telemetry-hud { width: 255px; bottom: 70px; right: 20px; }
+  .hero-typewriter { font-size: 8px; flex-wrap: wrap; gap: 4px; }
+  .preloader-top { gap: 12px; }
+  .preloader-log { font-size: 8px; }
+}
+@media (prefers-reduced-motion: reduce) { .hero-section { height: auto; } .hero-stage { position: relative; } }
