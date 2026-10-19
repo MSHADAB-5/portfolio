@@ -4,12 +4,17 @@ import './styles/base.css';
 import './styles/typography.css';
 import './styles/components/ui.css';
 import './styles/sections/hero.css';
+import './styles/sections/story.css';
 import { setupScroll } from './core/scroll';
 import { setupReveals } from './core/motion';
 import { setupInteractions } from './ui/interactions';
 import { setupHero, runPreloader } from './sections/hero';
+import { renderBento } from './sections/bento';
+import { setupTerminal } from './sections/terminal';
 
+renderBento();
 setupScroll();
 setupInteractions();
+setupTerminal(() => document.dispatchEvent(new Event('contact:open')));
 void runPreloader(setupHero());
 document.fonts.ready.then(setupReveals);

@@ -1,0 +1,82 @@
+.manifesto-section { background: radial-gradient(ellipse at 50% 65%,#0d142425,transparent 70%); padding-top: 80px; }
+.manifesto-stage { max-width: 950px; margin: 0 auto 170px; }
+.manifesto-stage > .eyebrow { color: var(--text-muted); margin-bottom: 32px; }
+.manifesto-copy { font-size: clamp(25px,3.8vw,48px); font-weight: 500; line-height: 1.4; letter-spacing: -.035em; }
+.bento-header { max-width: 680px; margin-bottom: 46px; }
+.bento-header .eyebrow { margin-bottom: 18px; color: var(--text-muted); }
+.bento-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.bento-card {
+  overflow: hidden; background: linear-gradient(150deg,#11151d,#090b10);
+  border: 1px solid #ffffff10; border-radius: 24px; padding: 32px;
+  display: flex; flex-direction: column; min-height: 310px; transform-style: preserve-3d;
+}
+.bento-fleet { grid-column: span 2; grid-row: span 2; min-height: 640px; padding: 42px; }
+.bento-chatops { grid-column: span 2; min-height: 270px; padding-right: 35%; }
+.bento-award { min-height: 270px; }
+.bento-label { font: 8px var(--font-mono); letter-spacing: .12em; color: #777e90; margin-bottom: 22px; }
+.bento-value { font-size: 64px; font-weight: 500; line-height: 1; letter-spacing: -.07em; margin: auto 0 14px; }
+.bento-fleet .bento-value { font-size: 110px; }
+.bento-title { font-size: 21px; font-weight: 550; letter-spacing: -.035em; line-height: 1.2; margin-bottom: 12px; max-width: 330px; }
+.bento-desc { color: #858b9b; font-size: 12px; line-height: 1.8; max-width: 360px; }
+.bento-patents .bento-value { color: #c2cbdc; }
+.bento-programs .bento-value { color: #64d2ff; }
+.bento-award .bento-value { color: #b4a893; font-size: 45px; }
+.bento-ai-orb {
+  position: absolute; right: 8%; top: 23%; width: 150px; height: 150px; border-radius: 50%;
+  background: radial-gradient(circle at 32% 25%,#e2f6ff,#487da0 16%,#13273a 48%,#090e18 70%);
+  box-shadow: inset -6px -3px 14px #8fceff40, 0 0 80px #2997ff12;
+  border: 1px solid #5a93b74d;
+}
+.node-status-grid { display: grid; grid-template-columns: repeat(8,1fr); gap: 8px; width: 100%; margin: 10px 0 30px; perspective: 800px; }
+.bento-fleet .node-status-grid { transform: rotateX(30deg) rotateZ(-8deg); padding: 12px 15px; margin-top: 30px; }
+.status-node { display: block; height: 18px; border-radius: 3px; border: 1px solid #4a90c933; background: linear-gradient(145deg,#1c3449,#111d2b); box-shadow: inset 0 1px #71c0fa22; }
+.status-node::before { content: ''; display: block; width: 20%; height: 2px; background: #4bb0ff; margin: 4px; box-shadow: 0 0 7px #2997ff; }
+.healing-node::before { animation: heal 8s infinite; }
+@keyframes heal { 0%,25% { background: #4bb0ff; } 30%,45% { background: #ff9f0a; } 46%,64% { background: #ff453a; } 65%,100% { background: #30d158; } }
+.terminal-section { padding-top: 40px; }
+.terminal-section .section-header { max-width: 690px; }
+.terminal-perspective-stage { perspective: 1600px; }
+.terminal-window {
+  background: #080b10; border: 1px solid #ffffff27; border-radius: 18px; overflow: hidden;
+  box-shadow: 0 40px 120px #000b, 0 0 100px #2997ff07, inset 0 1px #ffffff13;
+}
+.terminal-chrome { min-height: 48px; padding: 12px 20px; display: flex; align-items: center; gap: 20px; border-bottom: 1px solid #ffffff10; background: #171a21; }
+.terminal-dots { display: flex; gap: 7px; }
+.terminal-dot { width: 9px; height: 9px; border-radius: 50%; background: #ff5f57; }
+.terminal-dot.yellow { background: #febc2e; }.terminal-dot.green { background: #28c840; }
+.terminal-tab-title { font: 8px var(--font-mono); color: #828898; flex: 1; }
+.terminal-lock { font-size: 7px; color: #59b395; margin-right: 8px; }
+.terminal-chrome-actions { display: flex; gap: 8px; }
+.terminal-action-btn { border: 1px solid #ffffff14; background: #ffffff05; font: 8px var(--font-mono); border-radius: 5px; padding: 5px 8px; }
+.terminal-quick-chips { display: flex; gap: 8px; flex-wrap: wrap; padding: 14px 20px; border-bottom: 1px solid #ffffff0a; align-items: center; }
+.chips-label { color: #626c80; font: 8px var(--font-mono); }
+.terminal-chip { font: 8px var(--font-mono); background: #ffffff04; border: 1px solid #ffffff0e; border-radius: 5px; padding: 5px 7px; color: #828d9f; }
+.terminal-chip:hover { color: #64d2ff; border-color: #64d2ff44; }
+.terminal-body { height: 340px; overflow: auto; overscroll-behavior: contain; padding: 24px; font: 11px/1.9 var(--font-mono); color: #78859c; scrollbar-width: thin; scrollbar-color: #29394c #080b10; }
+.terminal-line { white-space: pre-wrap; overflow-wrap: anywhere; }
+.line-cmd { color: #e0e7ef; margin-top: 6px; }.line-success { color: #62c990; }.line-info { color: #66b7db; }.line-warn { color: #dca859; }
+.terminal-input-bar { display: flex; align-items: center; gap: 12px; border-top: 1px solid #ffffff12; padding: 16px 20px; background: #0e1219; }
+.terminal-prompt-label { font: 9px var(--font-mono); white-space: nowrap; }.prompt-user { color: #62c990; }.prompt-path { color: #64d2ff; }
+.terminal-input { min-width: 0; width: 100%; background: none; border: 0; font: 10px var(--font-mono); padding: 4px; }
+.terminal-input::placeholder { color: #465266; }
+.terminal-send-btn { font: 9px var(--font-mono); border: 1px solid #ffffff14; background: #ffffff06; border-radius: 6px; padding: 6px 10px; white-space: nowrap; }
+@media (max-width: 800px) {
+  .manifesto-stage { margin-bottom: 90px; }
+  .bento-grid { grid-template-columns: repeat(2,1fr); gap: 12px; }
+  .bento-fleet { grid-column: span 2; grid-row: auto; min-height: 500px; padding: 28px; }
+  .bento-card { padding: 24px; min-height: 300px; }
+  .bento-chatops { grid-column: span 2; padding-right: 35%; }
+  .bento-award { grid-column: span 2; min-height: 200px; }
+  .bento-value { font-size: 52px; }
+  .bento-label { font-size: 7px; }
+  .bento-ai-orb { width: 100px; height: 100px; right: 6%; top: 35%; }
+  .bento-title { font-size: 19px; }
+  .terminal-chrome { flex-wrap: wrap; gap: 12px; padding: 12px; }
+  .terminal-tab-title { font-size: 7px; }
+  .terminal-chrome-actions { width: 100%; justify-content: flex-end; }
+  .terminal-quick-chips { padding: 12px; gap: 5px; }
+  .terminal-body { padding: 16px; font-size: 9px; height: 320px; }
+  .terminal-input-bar { flex-wrap: wrap; padding: 12px; gap: 8px; }
+  .terminal-prompt-label { width: 100%; }
+  .terminal-input { width: calc(100% - 65px); }
+}
