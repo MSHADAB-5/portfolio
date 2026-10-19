@@ -1,0 +1,52 @@
+:root {
+  /* Apple Dark "Pro" Surfaces */
+  --bg-void: #000000;
+  --bg-elevated-1: #090a0f;
+  --bg-elevated-2: #11131c;
+  --bg-elevated-3: #181b28;
+  --surface-glass: rgba(18, 20, 30, 0.66);
+  --surface-glass-strong: rgba(12, 14, 22, 0.86);
+  --surface-card: rgba(255, 255, 255, 0.032);
+  --surface-card-hover: rgba(255, 255, 255, 0.058);
+
+  /* Specular Hairlines & Borders */
+  --border-hairline: rgba(255, 255, 255, 0.085);
+  --border-specular: rgba(255, 255, 255, 0.16);
+  --border-glow-blue: rgba(41, 151, 255, 0.45);
+  --border-glow-green: rgba(48, 209, 88, 0.45);
+
+  /* Typography Colors */
+  --text-primary: #f5f5f7;
+  --text-secondary: #a1a1aa;
+  --text-muted: #6e6e77;
+  --text-dim: rgba(245, 245, 247, 0.22);
+
+  /* Apple System Accents & Telemetry Colors */
+  --accent-blue: #2997ff;
+  --accent-cyan: #64d2ff;
+  --accent-green: #30d158;
+  --accent-amber: #ff9f0a;
+  --accent-red: #ff453a;
+  --accent-purple: #bf5af2;
+
+  /* Font Stacks — genuine SF Pro on Apple devices, self-hosted Inter Variable elsewhere */
+  --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter Variable', 'Inter', system-ui, sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter Variable', 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Monaco, monospace;
+
+  /* Radii & Spacing */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-pill: 9999px;
+
+  --container-max: 1240px;
+  --container-wide: 1400px;
+  --section-pad-y: clamp(96px, 13vh, 168px);
+  --section-pad-x: clamp(20px, 5vw, 64px);
+
+  /* Easing */
+  --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+}
