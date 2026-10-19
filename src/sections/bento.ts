@@ -1,6 +1,8 @@
 import { el, requireEl } from '../core/dom';
 import { gsap } from '../core/scroll';
 import { motionQuery } from '../core/perf';
+import { createAICore } from './aiCore';
+import { createFleetVisual } from './fleet';
 
 export function createStatusGrid(count = 56): HTMLElement {
   const grid = el('div', 'node-status-grid');
@@ -28,9 +30,9 @@ export function renderBento() {
     card.setAttribute('data-tilt', '');
     card.setAttribute('data-reveal', '');
     card.append(el('span', 'bento-label', item.label));
-    if (item.kind === 'fleet') card.append(createStatusGrid());
+    if (item.kind === 'fleet') card.append(createFleetVisual());
     card.append(el('div', 'bento-value', item.value), el('h3', 'bento-title', item.title), el('p', 'bento-desc', item.body));
-    if (item.kind === 'chatops') card.prepend(el('div', 'bento-ai-orb'));
+    if (item.kind === 'chatops') card.prepend(createAICore());
     grid.append(card);
   });
   if (!motionQuery.matches) {

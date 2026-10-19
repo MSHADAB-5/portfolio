@@ -11,7 +11,8 @@
   display: flex; flex-direction: column; min-height: 310px; transform-style: preserve-3d;
 }
 .bento-fleet { grid-column: span 2; grid-row: span 2; min-height: 640px; padding: 42px; }
-.bento-chatops { grid-column: span 2; min-height: 270px; padding-right: 35%; }
+.bento-chatops { grid-column: span 2; min-height: 350px; padding-right: 48%; }
+.bento-chatops .bento-value { margin-top: 0; }
 .bento-award { min-height: 270px; }
 .bento-label { font: 8px var(--font-mono); letter-spacing: .12em; color: #777e90; margin-bottom: 22px; }
 .bento-value { font-size: 64px; font-weight: 500; line-height: 1; letter-spacing: -.07em; margin: auto 0 14px; }
@@ -21,14 +22,29 @@
 .bento-patents .bento-value { color: #c2cbdc; }
 .bento-programs .bento-value { color: #64d2ff; }
 .bento-award .bento-value { color: #b4a893; font-size: 45px; }
-.bento-ai-orb {
-  position: absolute; right: 8%; top: 23%; width: 150px; height: 150px; border-radius: 50%;
-  background: radial-gradient(circle at 32% 25%,#e2f6ff,#487da0 16%,#13273a 48%,#090e18 70%);
-  box-shadow: inset -6px -3px 14px #8fceff40, 0 0 80px #2997ff12;
-  border: 1px solid #5a93b74d;
+.ai-core-stage { position: absolute; right: -2%; top: 0; width: 55%; height: 100%; }
+.ai-core-stage::before {
+  content: ''; position: absolute; inset: 12% -10%;
+  background: radial-gradient(ellipse,#2997ff12,transparent 65%); pointer-events: none;
 }
+.ai-core-canvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s; }
+.ai-core-stage.is-ready .ai-core-canvas { opacity: 1; }
+.ai-core-caption {
+  position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); white-space: nowrap;
+  font: 6px var(--font-mono); letter-spacing: .16em; color: #5c7b92; pointer-events: none;
+}
+.ai-core-fallback { position: absolute; inset: 0; perspective: 800px; transition: opacity .7s; }
+.is-ready .ai-core-fallback { opacity: 0; }
+.ai-core-layer, .ai-core-die {
+  position: absolute; top: 50%; left: 50%; width: 145px; height: 145px; border-radius: 18px;
+  border: 2px solid #a0c0d573; transform: translate(-50%,-50%) rotateX(58deg) rotateZ(-35deg);
+  background: linear-gradient(135deg,#b1dfff1f,#34597615); box-shadow: 0 5px 0 #3a5064, 0 25px 35px #0005;
+}
+.ai-core-layer.layer-bottom { margin-top: 45px; background: #152437; border-color: #485d73; }
+.ai-core-layer.layer-middle { margin-top: 0; box-shadow: 0 3px 0 #42586e, inset 0 0 30px #2997ff22; }
+.ai-core-layer.layer-top { margin-top: -45px; }
+.ai-core-die { width: 60px; height: 60px; margin-top: -10px; border-radius: 7px; font: 26px/60px var(--font-mono); text-align: center; color: #bcecff; background: #0e2c48; border-color: #75c8ff; box-shadow: 0 0 28px #2997ff66; }
 .node-status-grid { display: grid; grid-template-columns: repeat(8,1fr); gap: 8px; width: 100%; margin: 10px 0 30px; perspective: 800px; }
-.bento-fleet .node-status-grid { transform: rotateX(30deg) rotateZ(-8deg); padding: 12px 15px; margin-top: 30px; }
 .status-node { display: block; height: 18px; border-radius: 3px; border: 1px solid #4a90c933; background: linear-gradient(145deg,#1c3449,#111d2b); box-shadow: inset 0 1px #71c0fa22; }
 .status-node::before { content: ''; display: block; width: 20%; height: 2px; background: #4bb0ff; margin: 4px; box-shadow: 0 0 7px #2997ff; }
 .healing-node::before { animation: heal 8s infinite; }
@@ -65,11 +81,10 @@
   .bento-grid { grid-template-columns: repeat(2,1fr); gap: 12px; }
   .bento-fleet { grid-column: span 2; grid-row: auto; min-height: 500px; padding: 28px; }
   .bento-card { padding: 24px; min-height: 300px; }
-  .bento-chatops { grid-column: span 2; padding-right: 35%; }
+  .bento-chatops { grid-column: span 2; padding-right: 48%; }
   .bento-award { grid-column: span 2; min-height: 200px; }
   .bento-value { font-size: 52px; }
   .bento-label { font-size: 7px; }
-  .bento-ai-orb { width: 100px; height: 100px; right: 6%; top: 35%; }
   .bento-title { font-size: 19px; }
   .terminal-chrome { flex-wrap: wrap; gap: 12px; padding: 12px; }
   .terminal-tab-title { font-size: 7px; }
@@ -79,4 +94,9 @@
   .terminal-input-bar { flex-wrap: wrap; padding: 12px; gap: 8px; }
   .terminal-prompt-label { width: 100%; }
   .terminal-input { width: calc(100% - 65px); }
+}
+@media (max-width: 560px) {
+  .bento-chatops { padding-right: 24px; padding-bottom: 270px; min-height: 560px; }
+  .ai-core-stage { width: 100%; top: auto; bottom: 0; right: 0; height: 285px; }
+  .ai-core-caption { bottom: 20px; font-size: 7px; }
 }

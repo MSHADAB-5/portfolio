@@ -5,6 +5,7 @@ import './styles/typography.css';
 import './styles/components/ui.css';
 import './styles/sections/hero.css';
 import './styles/sections/story.css';
+import './styles/sections/fleet.css';
 import './styles/sections/journey.css';
 import './styles/sections/work.css';
 import './styles/sections/footer.css';

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 390" fill="none">
+  <defs>
+    <linearGradient id="paint" x1="350" y1="140" x2="400" y2="270" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#d3e0eb"/><stop offset=".28" stop-color="#8499ae"/>
+      <stop offset=".53" stop-color="#c1d1df"/><stop offset="1" stop-color="#233444"/>
+    </linearGradient>
+    <linearGradient id="window" x1="320" y1="115" x2="420" y2="180" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#47617b"/><stop offset="1" stop-color="#0a1522"/>
+    </linearGradient>
+    <radialGradient id="halo"><stop stop-color="#243f58" stop-opacity=".6"/><stop offset="1" stop-color="#07101a" stop-opacity="0"/></radialGradient>
+    <g id="wheel">
+      <circle r="42" fill="#080b10" stroke="#111a24" stroke-width="8"/>
+      <circle r="29" fill="#15202c" stroke="#8799ad" stroke-width="2"/>
+      <path d="M0-27V27M-26-8 26 8M-17 22 17-22M-26 9 26-9M-17-22 17 22" stroke="#91a2b3" stroke-width="3"/>
+      <circle r="7" fill="#a5b6c7"/>
+    </g>
+  </defs>
+  <ellipse cx="410" cy="240" rx="340" ry="130" fill="url(#halo)"/>
+  <g stroke="#2c5472" stroke-opacity=".45">
+    <path d="m110 290 270-55 300 55-270 65Z"/>
+    <path d="m145 302 270-55m-190 72 270-55m-190 72 270-55M195 273l300 55M280 256l300 55M365 239l300 55"/>
+  </g>
+  <ellipse cx="413" cy="263" rx="245" ry="21" fill="#000" opacity=".5"/>
+  <path d="m151 222 14-40 70-22 73-49 88-4 81 50 140 20 44 27 10 35-31 10H171Z" fill="url(#paint)" stroke="#a8c6dd" stroke-opacity=".35"/>
+  <path d="m254 158 64-41 72-2 65 43Z" fill="url(#window)" stroke="#8295a9" stroke-width="2"/>
+  <path d="m363 116 4 43" stroke="#8096aa" stroke-width="4"/>
+  <path d="m168 189 75-20 227 1 143 20" stroke="#e6f4ff" stroke-opacity=".45"/>
+  <path d="m287 180 140 2 11 45-143 4Z" stroke="#293d51" stroke-opacity=".55"/>
+  <path d="m182 238 452 0" stroke="#0b141e" stroke-width="8"/>
+  <path d="M191 240a49 49 0 0 1 98 0m228 0a49 49 0 0 1 98 0" fill="#05080d"/>
+  <use href="#wheel" x="240" y="238"/><use href="#wheel" x="566" y="238"/>
+  <path d="m619 193 29 10" stroke="#e3f6ff" stroke-width="5" stroke-linecap="round"/>
+  <path d="m165 191 15-3" stroke="#ec404d" stroke-width="4"/>
+  <path d="m635 215 23 3v13l-24 0Z" fill="#0a1522"/>
+  <path d="m442 150 18-5 15 9-11 9" fill="#8ba5bd"/>
+  <path d="m485 181 37 5m-27 1 36 5" stroke="#31495f" stroke-width="3"/>
+  <g fill="#79c7f5"><circle cx="152" cy="300" r="2"/><circle cx="675" cy="299" r="2"/><circle cx="415" cy="347" r="2"/></g>
+</svg>
