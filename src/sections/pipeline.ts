@@ -3,6 +3,7 @@ import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
 import { el, requireEl } from '../core/dom';
 import { gsap, ScrollTrigger } from '../core/scroll';
 import { PIPELINE_STAGES } from '../data/content';
+import { motionMedia } from '../core/perf';
 
 gsap.registerPlugin(DrawSVGPlugin, MotionPathPlugin);
 
@@ -19,7 +20,7 @@ export function setupPipeline() {
     );
     cards.append(card);
   });
-  gsap.matchMedia().add('(min-width: 801px) and (prefers-reduced-motion: no-preference)', () => {
+  gsap.matchMedia().add(`(min-width: 801px) and ${motionMedia}`, () => {
     const track = requireEl('#pipeline-track');
     const viewport = requireEl('#pipeline-viewport');
     const distance = () => Math.max(0, track.scrollWidth - viewport.clientWidth + 60);

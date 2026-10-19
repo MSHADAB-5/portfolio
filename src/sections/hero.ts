@@ -1,5 +1,5 @@
 import { gsap, ScrollTrigger } from '../core/scroll';
-import { motionQuery, qualityTier } from '../core/perf';
+import { motionMedia, motionQuery, qualityTier } from '../core/perf';
 import { requireEl } from '../core/dom';
 import { PROFILE, SELF_HEAL_SCENARIOS } from '../data/content';
 import type { InfraScene } from '../gl/InfraCore';
@@ -31,7 +31,7 @@ export function setupHero() {
     requireEl('#hud-fleet').textContent = ['DEGRADED', 'REMEDIATING'].includes(state)
       ? '111 / 112 ONLINE' : '112 / 112 ONLINE';
   });
-  gsap.matchMedia().add('(prefers-reduced-motion: no-preference) and (min-width: 801px)', () => {
+  gsap.matchMedia().add(`${motionMedia} and (min-width: 801px)`, () => {
     ScrollTrigger.create({
       trigger: '#about', start: 'top top', end: 'bottom bottom', scrub: true,
       onUpdate: (s) => scene?.setProgress(s.progress),

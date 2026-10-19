@@ -1,13 +1,14 @@
 import { gsap, ScrollTrigger } from './scroll';
 import { CustomEase } from 'gsap/CustomEase';
 import { SplitText } from 'gsap/SplitText';
+import { motionMedia } from './perf';
 
 gsap.registerPlugin(CustomEase, SplitText);
 CustomEase.create('apple', '0.16,1,0.3,1');
 export { SplitText };
 
 export function setupReveals() {
-  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+  gsap.matchMedia().add(motionMedia, () => {
     document.querySelectorAll<HTMLElement>('[data-reveal]').forEach((node) => {
       gsap.from(node, {
         y: 35, opacity: 0, duration: 0.9, ease: 'apple',

@@ -2,6 +2,7 @@ import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
 import { gsap, ScrollTrigger } from '../core/scroll';
 import { el, requireEl } from '../core/dom';
 import { EXPERIENCE_TIMELINE } from '../data/content';
+import { motionMedia } from '../core/perf';
 
 gsap.registerPlugin(ScrambleTextPlugin);
 
@@ -13,7 +14,7 @@ export function setupExperience() {
     highlights?.forEach((text) => list.append(el('li', '', text)));
     card.append(list);
   });
-  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+  gsap.matchMedia().add(motionMedia, () => {
     cards.forEach((card) => {
       ScrollTrigger.create({
         trigger: card, start: 'top 65%', end: 'bottom 35%',

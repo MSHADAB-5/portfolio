@@ -1,5 +1,5 @@
 import { gsap, ScrollTrigger } from '../core/scroll';
-import { finePointer, motionQuery } from '../core/perf';
+import { finePointer, motionMedia, motionQuery } from '../core/perf';
 import { requireEl } from '../core/dom';
 
 export function setupInteractions() {
@@ -35,7 +35,7 @@ export function setupInteractions() {
     });
   });
 
-  gsap.matchMedia().add('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)', () => {
+  gsap.matchMedia().add(`(hover: hover) and (pointer: fine) and ${motionMedia}`, () => {
     const dot = requireEl('#cursor-dot');
     const ring = requireEl('#cursor-ring');
     const label = requireEl('#cursor-label');

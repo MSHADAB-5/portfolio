@@ -1,6 +1,6 @@
 import { el, requireEl } from '../core/dom';
 import { gsap } from '../core/scroll';
-import { motionQuery } from '../core/perf';
+import { motionMedia, motionQuery } from '../core/perf';
 import { TERMINAL_BOOT_SCRIPT } from '../data/content';
 import { completeCommand, MAX_COMMAND_LENGTH, runCommand } from '../terminal/commands';
 
@@ -94,7 +94,7 @@ export function setupTerminal(openContact: () => void) {
     stop(); append('Demo paused. Type help for commands.', 'info'); input.focus({ preventScroll: true });
   });
   motionQuery.addEventListener('change', () => { if (motionQuery.matches) stop(); });
-  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+  gsap.matchMedia().add(motionMedia, () => {
     gsap.from('#terminal-window', {
       rotationX: 28, scale: .88, transformPerspective: 1600, transformOrigin: 'center bottom',
       scrollTrigger: { trigger: '#terminal-stage', start: 'top 95%', end: 'top 35%', scrub: 1 },
