@@ -18,16 +18,15 @@ export function createStatusGrid(count = 56): HTMLElement {
 export function renderBento() {
   const grid = requireEl('#bento-grid');
   const items = [
-    { kind: 'fleet', label: '01 / FLEET AUTOMATION', value: '100+', title: 'Environments. One orchestration layer.', body: 'Provisioning, configuration and lifecycle management across Linux, Windows and QNX. Powered by Ansible and AWX.' },
+    { kind: 'fleet', label: '01 / END-TO-END OWNERSHIP', value: '100+', title: 'One bench farm. Full accountability.', body: 'I own day-to-day reliability, user support and automation across Linux, Windows and QNX, and lead two engineers to keep the farm ready for delivery.' },
     { kind: 'programs', label: '02 / DELIVERY AT SCALE', value: '10+', title: 'Vehicle programs supported.', body: 'CI/CD workflows that connect platform operations to critical engineering delivery.' },
-    { kind: 'patents', label: '03 / INNOVATION', value: '3*', title: 'Ideas beyond the playbook.', body: 'Patent pipeline: two in review, one in filing with the IP team. Department Innovation SPOC.' },
+    { kind: 'patents', label: '03 / INNOVATION', value: '3*', title: 'Ideas beyond the playbook.', body: 'One patent application in the grant pipeline; two submissions in jury review. Department Innovation SPOC driving AI/GenAI adoption.' },
     { kind: 'chatops', label: '04 / AI-AUGMENTED OPERATIONS', value: 'AI', title: 'Less noise. More context.', body: 'Azure OpenAI turns operational alerts into actionable summaries inside Microsoft Teams.' },
     { kind: 'award', label: '05 / RECOGNITION', value: '2025', title: 'Achievement of Excellence.', body: 'Recognized at Mercedes-Benz for resolving critical pipeline and infrastructure escalations.' },
   ];
   items.forEach((item) => {
     const card = el('article', `bento-card bento-${item.kind}`);
     card.setAttribute('data-spotlight', '');
-    card.setAttribute('data-tilt', '');
     card.setAttribute('data-reveal', '');
     card.append(el('span', 'bento-label', item.label));
     if (item.kind === 'fleet') card.append(createFleetVisual());

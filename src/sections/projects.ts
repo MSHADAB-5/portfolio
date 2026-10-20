@@ -39,7 +39,7 @@ function projectVisual(project: ProjectItem) {
   } else {
     visual.append(el('div', 'patent-count', '03*'));
     const list = el('div', 'patent-states');
-    list.append(el('span', '', '02 / In review process'), el('span', '', '01 / In filing with IP team'));
+    list.append(el('span', '', '02 / In jury review'), el('span', '', '01 / In grant pipeline'));
     visual.append(list);
   }
   return visual;

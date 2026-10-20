@@ -28,6 +28,18 @@ describe('content & phone obfuscation', () => {
     expect(HERO_STATS).toHaveLength(4);
     expect(HERO_STATS[0]?.value).toBe(100);
   });
+
+  it('emphasizes ownership and keeps the static hero aligned with profile content', () => {
+    const pages = import.meta.glob('../index.html', { query: '?raw', import: 'default', eager: true });
+    const html = String(Object.values(pages)[0]).replace(/\s+/g, ' ').replaceAll('&amp;', '&');
+    expect(html).toContain(PROFILE.headline);
+    expect(html).toContain(PROFILE.subheadline);
+    expect(html).toContain(PROFILE.manifesto);
+    expect(PROFILE.subheadline).toContain('ADAS ECU test farm with 100+ benches');
+    expect(PROFILE.subheadline).toContain('lead a team');
+    expect(PROFILE.manifesto).toContain('prevent escalations');
+    expect(HERO_STATS.find((stat) => stat.label === 'Engineers Led')?.value).toBe(2);
+  });
 });
 
 describe('orbit tools', () => {
