@@ -63,14 +63,22 @@ export function setupProjects() {
     card.append(copy, projectVisual(project));
     stack.append(card);
   });
-  gsap.matchMedia().add(`(min-width: 801px) and (min-height: 700px) and ${motionMedia}`, () => {
+  gsap.matchMedia().add(motionMedia, () => {
     const cards = [...stack.querySelectorAll<HTMLElement>('.project-card')];
-    cards.forEach((card, i) => {
-      if (!cards[i + 1]) return;
-      gsap.to(card, {
-        scale: .94, filter: 'brightness(0.5)', transformOrigin: 'center top', ease: 'none',
-        scrollTrigger: { trigger: cards[i + 1], start: 'top bottom', end: 'top 140px', scrub: true },
-      });
+    cards.forEach((card) => {
+      const copy = card.querySelector<HTMLElement>('.project-copy')!;
+      const visual = card.querySelector<HTMLElement>('.project-visual')!;
+      gsap.timeline({
+        defaults: { ease: 'power3.out', clearProps: 'transform,opacity,visibility' },
+        scrollTrigger: { trigger: card, start: 'top 82%', once: true },
+      })
+        .fromTo(card, { y: 56, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .9 })
+        .fromTo(copy.children, { y: 20, autoAlpha: 0 }, {
+          y: 0, autoAlpha: 1, duration: .65, stagger: .075,
+        }, .12)
+        .fromTo(visual, { x: 36, autoAlpha: 0 }, {
+          x: 0, autoAlpha: 1, duration: .85,
+        }, .24);
     });
   });
 }
