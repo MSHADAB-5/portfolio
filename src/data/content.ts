@@ -88,11 +88,11 @@ export const PROFILE = {
   companyFull: 'Mercedes-Benz Research and Development India',
   plantLocation: 'Sindelfingen, Germany',
   overline: 'Platform Engineer · Mercedes-Benz R&D India',
-  headline: 'Infrastructure that heals itself.',
+  headline: 'I build. I solve. I deliver.',
   subheadline:
-    'Platform Engineer at Mercedes-Benz R&D building large-scale infrastructure automation, self-healing systems, and AI-augmented operational tooling. I make infrastructure reliable, automated, and intelligent.',
+    'At Mercedes-Benz R&D, I own an ADAS ECU test farm with 100+ benches and lead a team to deliver and sustain reliable day-to-day operations. I work across DevOps, AIOps and platform operations, turning complex problems into dependable tools and staying accountable through high-pressure delivery.',
   manifesto:
-    'At scale, manual operations fail silently. Across 100+ test and production environments powering 10+ vehicle programs, I engineer Ansible/AWX automation frameworks, autonomous fault-recovery loops, and Azure OpenAI ChatOps agents that detect, diagnose, and heal degraded infrastructure before human operators ever get paged.',
+    'I take ownership from the first user request to the last production issue. I lead two engineers and keep a 100+ environment bench farm ready for the teams who depend on it. I automate recurring work, introduce useful technologies, and tackle problems early to prevent escalations. When delivery gets difficult, I stay with the problem and see it through.',
   location: 'Bengaluru, Karnataka, India',
   coordinates: {
     bengaluru: { lat: 12.9716, lng: 77.5946, label: 'Bengaluru · MBRDI HQ' },
@@ -104,11 +104,11 @@ export const PROFILE = {
   githubUrl: 'https://github.com/MSHADAB-5',
   githubDisplay: 'github.com/MSHADAB-5',
   typedPhrases: [
-    'Platform Automation Engineer',
-    'DevOps & Infrastructure at Mercedes-Benz',
-    'Building Self-Healing Systems',
-    'AI-Augmented Operations',
-    'Ansible · Docker · CI/CD · Python',
+    'End-to-end bench-farm ownership',
+    'Leading a team of two engineers',
+    'DevOps · AIOps · User enablement',
+    'Calm under pressure. Persistent.',
+    'Automation that helps people',
   ],
 } as const;
 
@@ -143,11 +143,10 @@ export const HERO_STATS: readonly StatItem[] = [
     detail: 'Platform automation, CI/CD pipelines & resilient operations at Mercedes-Benz R&D',
   },
   {
-    value: 3,
+    value: 2,
     suffix: '',
-    superscript: '*',
-    label: 'Patents Filed',
-    detail: '2 in review process, 1 in filing process with IP team as department Innovation SPOC',
+    label: 'Engineers Led',
+    detail: 'Currently leading two engineers across bench-farm operations, automation and user support',
   },
   {
     value: 10,
@@ -267,7 +266,7 @@ export const EXPERIENCE_TIMELINE: readonly TimelineItem[] = [
     highlights: [
       'Engineered Microsoft Teams ChatOps bot integrated with Azure OpenAI for conversational ops',
       'Led department-wide ideation workshops and mentored engineers on patent filing',
-      '3 patents in pipeline (2 in review process, 1 in filing process with IP team)',
+      'Patent pipeline: one application in the grant pipeline and two submissions in jury review',
     ],
   },
   {
@@ -279,11 +278,11 @@ export const EXPERIENCE_TIMELINE: readonly TimelineItem[] = [
     location: 'Bengaluru, India',
     badge: 'Core Platform Ownership',
     description:
-      'Own the Ansible/AWX automation framework powering 100+ environments. Design CI/CD pipelines (Jenkins, GitLab CI), build self-healing infrastructure, and manage large-scale platform operations for multiple vehicle programs.',
+      'Own the end-to-end operation of a 100+ environment bench farm and currently lead two engineers. Work across platform operations, CI/CD, automation and user support to keep vehicle programs moving, prevent escalations and resolve critical blockers under pressure.',
     highlights: [
-      'Architected and maintain Ansible/AWX provisioning across Linux, Windows, and QNX targets',
-      'Built event-driven self-healing recovery loops that remediate degraded environments automatically',
-      'Designed multi-stage Jenkins & GitLab CI/CD pipelines serving 10+ vehicle programs',
+      'Lead two engineers and coordinate cross-functional delivery, user support and bench-farm reliability',
+      'Automate provisioning, reservations and recovery across Linux, Windows and QNX with Ansible/AWX',
+      'Introduce monitoring, Teams ChatOps and CI/CD improvements to reduce manual work and address issues before escalation',
     ],
   },
   {
@@ -311,7 +310,7 @@ export const PROJECTS: readonly ProjectItem[] = [
     title: 'Environment Automation Framework',
     subtitle: 'Ansible & AWX platform orchestrating 100+ multi-OS environments on demand',
     description:
-      'Ansible-powered platform managing provisioning, configuration, and lifecycle of 100+ test environments. Supports parallel execution, on-demand reservations, and multi-platform deployments (Linux, Windows, QNX).',
+      'I own the bench-farm lifecycle across 100+ test environments, from provisioning and reservations to user support and recovery. Built Ansible/AWX automation for repeatable Linux, Windows and QNX operations, reducing manual work for engineering teams.',
     metrics: [
       { label: 'Managed Fleet', value: '100+ Envs' },
       { label: 'Concurrency', value: '50 Forks' },
@@ -328,7 +327,7 @@ export const PROJECTS: readonly ProjectItem[] = [
     title: 'Teams ChatOps Bot',
     subtitle: 'Azure OpenAI operational copilot inside Microsoft Teams',
     description:
-      'Microsoft Teams bot with Azure OpenAI integration enabling conversational infrastructure management. Uses structured prompt engineering for alert summarization and agent-style routing to automation workflows.',
+      'Built a Microsoft Teams application connecting on-premises operations to Teams through an intranet-to-internet bridge. Integrated Azure OpenAI for alert summaries, diagnostic suggestions and routing to automation workflows, giving engineers conversational access to environment and pipeline health.',
     metrics: [
       { label: 'AI Engine', value: 'Azure OpenAI' },
       { label: 'Interface', value: 'MS Teams Bot' },
@@ -362,11 +361,11 @@ export const PROJECTS: readonly ProjectItem[] = [
     title: 'Patents & Innovation SPOC',
     subtitle: 'Driving AI & automation invention disclosures across the department',
     description:
-      'Department-level Innovation SPOC driving AI/automation adoption across teams. 3 patents filed — 2 in review process, 1 in filing process with IP team. Conduct ideation workshops, mentor engineers on innovation practices, and manage the patent filing pipeline.',
+      'Department Innovation SPOC driving AI/GenAI adoption, workshops and mentoring across teams. Manage one patent application in the grant pipeline and two submissions in jury review.',
     metrics: [
-      { label: 'Patents Filed', value: '3*' },
-      { label: 'In Review', value: '2 Disclosures' },
-      { label: 'In Filing', value: '1 With IP Team' },
+      { label: 'Patent Pipeline', value: '3 Submissions' },
+      { label: 'Jury Review', value: '2 Submissions' },
+      { label: 'Grant Pipeline', value: '1 Application' },
     ],
     tags: ['Patents', 'Innovation', 'Mentoring', 'Workshops', 'AI Adoption'],
     visualType: 'patents-hub',
