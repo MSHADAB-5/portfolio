@@ -66,11 +66,19 @@ export function setupProjects() {
   gsap.matchMedia().add(motionMedia, () => {
     const cards = [...stack.querySelectorAll<HTMLElement>('.project-card')];
     cards.forEach((card) => {
-      gsap.fromTo(card, { y: 28, autoAlpha: 0 }, {
-        y: 0, autoAlpha: 1, duration: .7, ease: 'power3.out',
-        clearProps: 'transform,opacity,visibility',
-        scrollTrigger: { trigger: card, start: 'top 92%', once: true },
-      });
+      const copy = card.querySelector<HTMLElement>('.project-copy')!;
+      const visual = card.querySelector<HTMLElement>('.project-visual')!;
+      gsap.timeline({
+        defaults: { ease: 'power3.out', clearProps: 'transform,opacity,visibility' },
+        scrollTrigger: { trigger: card, start: 'top 82%', once: true },
+      })
+        .fromTo(card, { y: 56, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: .9 })
+        .fromTo(copy.children, { y: 20, autoAlpha: 0 }, {
+          y: 0, autoAlpha: 1, duration: .65, stagger: .075,
+        }, .12)
+        .fromTo(visual, { x: 36, autoAlpha: 0 }, {
+          x: 0, autoAlpha: 1, duration: .85,
+        }, .24);
     });
   });
 }
