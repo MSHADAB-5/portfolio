@@ -57,9 +57,6 @@
 .award-org { font-size: 10px; color: #4f617c; margin-top: 12px; }
 .award-symbol { font-size: 28px; color: #627186; transition: transform .5s var(--ease-apple); }
 .award-row:hover .award-symbol { transform: rotate(45deg); color: #c3d8f0; }
-@media (min-width: 801px) and (min-height: 700px) and (prefers-reduced-motion: no-preference) {
-  .project-card { position: sticky; top: 120px; }
-}
 @media (max-width: 1000px) {
   .project-copy { padding: 30px; }
   .project-visual { padding: 35px 20px; }

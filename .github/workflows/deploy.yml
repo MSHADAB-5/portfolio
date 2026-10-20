@@ -34,6 +34,16 @@ jobs:
         run: npm run typecheck && npm test
       - name: Build
         run: npm run build
+      - name: Verify production artifact
+        run: |
+          node --input-type=module <<'NODE'
+          import assert from 'node:assert/strict';
+          import { readFileSync, statSync } from 'node:fs';
+          const html = readFileSync('dist/index.html', 'utf8');
+          assert(!html.includes('/src/main.ts'), 'Pages must publish the Vite build, not source HTML');
+          assert.match(html, /src="\/portfolio\/assets\/[^\"]+\.js"/, 'Missing compiled entry point');
+          assert(statSync('dist/models/amg-one.glb').size > 0, 'Missing fleet model');
+          NODE
       - name: Setup Pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6
       - name: Upload artifact

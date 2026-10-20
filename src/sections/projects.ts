@@ -63,13 +63,13 @@ export function setupProjects() {
     card.append(copy, projectVisual(project));
     stack.append(card);
   });
-  gsap.matchMedia().add(`(min-width: 801px) and (min-height: 700px) and ${motionMedia}`, () => {
+  gsap.matchMedia().add(motionMedia, () => {
     const cards = [...stack.querySelectorAll<HTMLElement>('.project-card')];
-    cards.forEach((card, i) => {
-      if (!cards[i + 1]) return;
-      gsap.to(card, {
-        scale: .94, filter: 'brightness(0.5)', transformOrigin: 'center top', ease: 'none',
-        scrollTrigger: { trigger: cards[i + 1], start: 'top bottom', end: 'top 140px', scrub: true },
+    cards.forEach((card) => {
+      gsap.fromTo(card, { y: 28, autoAlpha: 0 }, {
+        y: 0, autoAlpha: 1, duration: .7, ease: 'power3.out',
+        clearProps: 'transform,opacity,visibility',
+        scrollTrigger: { trigger: card, start: 'top 92%', once: true },
       });
     });
   });
